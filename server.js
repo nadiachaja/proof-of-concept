@@ -17,17 +17,17 @@ app.get('/', async function (request, response) {
     const apiOverviewBooks = await fetch(`https://efm-student-case-proxy-api.vercel.app/overview`)
     const apiOverviewBooksJSON = await apiOverviewBooks.json()
 
-    const Fuse = require('fuse.js');
-    const fuseOptions = {
-        keys: [
-            "title",
-            "author",
-            "titel",
-            "jaar",
-            "plaats van uitgave"
-        ]
-    };
-    const Fuse = new Fuse(list, fuseOptions);
+    // const Fuse = require('fuse.js');
+    // const fuseOptions = {
+    //     keys: [
+    //         "title",
+    //         "author",
+    //         "titel",
+    //         "jaar",
+    //         "plaats van uitgave"
+    //     ]
+    // };
+    // const Fuse = new Fuse(list, fuseOptions);
 
     response.render('index.liquid', { books: apiOverviewBooksJSON.data })
   })

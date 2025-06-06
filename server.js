@@ -1,8 +1,6 @@
 
 import express from 'express'
 import { Liquid } from 'liquidjs';
-// import fetch from 'node-fetch'
-// import Fuse from 'fuse.js'
 
 const app = express()
 app.use(express.static('public'))
@@ -10,13 +8,28 @@ app.use(express.static('public'))
 const engine = new Liquid();
 app.engine('liquid', engine.express());
 
-app.set('views', './views')
+app.set('views', './views') 
 app.use(express.urlencoded({ extended: true }))
 
 
 app.get('/', async function (request, response) {
-    
-    response.render('index.liquid')
+
+    const apiOverviewBooks = await fetch(`https://efm-student-case-proxy-api.vercel.app/overview`)
+    const apiOverviewBooksJSON = await apiOverviewBooks.json()
+
+    const Fuse = require('fuse.js');
+    const fuseOptions = {
+        keys: [
+            "title",
+            "author",
+            "titel",
+            "jaar",
+            "plaats van uitgave"
+        ]
+    };
+    const Fuse = new Fuse(list, fuseOptions);
+
+    response.render('index.liquid', { books: apiOverviewBooksJSON.data })
   })
 
 

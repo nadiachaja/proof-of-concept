@@ -31,12 +31,15 @@ header{
     background-color: var(--bg-general);
     padding: 1em;
     margin: 1em;
+    border: var(--border-gernal);
+    border-radius: var(--border-radius-general);
 
     .heading-overview{
         font-weight: 500;
         color: var(--text-general);
         display: flex;
         justify-content: center;
+        font-size: var(--heading-title);
     }
 
     .searchbar{
@@ -49,21 +52,24 @@ header{
         padding-right: 4em;
         width: 100%;
         border-radius: var(--border-radius-zoekbalk);
-        border: var(--border-secondary);
+        /* border: var(--border-secondary); */
         background-position: 1em;
         background-repeat: no-repeat;
         background-image: url(/assets/microfoon.png);
         font-size: var(--text-paragraph);
+        border: none;
     }
 
     .click-search{
         position: absolute;
         right: 0em;
         width: 5em;
-        height: 4em;
+        /* height: 4em; */
+        height: 3.8em;
         padding: 1em;
         background-color: var(--bg-button);
         border-radius: 0px var(--border-radius-zoekbalk) var(--border-radius-zoekbalk) 0px;
-        border: var(--border-secondary);
+        /* border: var(--border-secondary); */
+        border: none;
     }
 }

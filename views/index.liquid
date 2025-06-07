@@ -9,4 +9,49 @@
     </div>
 </section>
 
+<form class="filters-catalog">
+    <select name="auteur" id="auteur">
+    <option value="">Auteur</option> {% comment %} moet dynamisch  {% endcomment %}
+    </select> 
+    
+    <select name="plaats van uitgave" id="plaats-van-uitgave">
+    <option value="">Plaats van uitgave</option> {% comment %} moet dynamisch  {% endcomment %}
+    </select> 
+
+    <select name="year" id="year">
+    <option value="">Jaar</option> {% comment %} moet dynamisch  {% endcomment %}
+    </select> 
+
+    <select name="Gedigitaliseerde publicaties" id="gedigitaliseerde-publicaties">
+    <option value="">Gedigitaliseerde publicaties</option> 
+    </select> 
+</form>
+
+<div class="container-resultaten">
+<p class="book-resultaten">30.000 resultaten </p>
+<div class="line"></div>
+</div>
+
+<div class="all-books">
+    <div class="books-container">
+        <img class="books-img" src="/assets/a411f94f4622cfa7c1a87f4f79328064.jpg" height="150px" width="150px" alt="">
+        {% comment %} <picture> 
+            <source type="image/avif" srcset="?format=avif">
+            <source type="image/webp" srcset="?format=webp">
+            <img class="books-img" loading="lazy" src=""
+                width="150" height="150" alt="">
+        </picture> {% endcomment %}
+        {% comment %} moet dynamisch  {% endcomment %}
+
+        <p class="text-info">Titel: Het eerste stuck van de wercken</p> {% comment %} moet dynamisch  {% endcomment %}
+        <p class="text-info">Auteur: Teellinck, Willem</p> {% comment %} moet dynamisch  {% endcomment %}
+        <p class="text-info">Jaar: 1659</p> {% comment %} moet dynamisch  {% endcomment %}
+        <p class="text-info">Plaats van uitgave: Utrecht</p> {% comment %} moet dynamisch  {% endcomment %}
+        <p class="text-info">Redacteur: Teellinck, Johannes, Teellinck, Theodorus</p> {% comment %} moet dynamisch  {% endcomment %}
+
+        <a class="to-detail">Meer informatie <img class="arrow-img" src="/assets/arrow-right.png" height="12px" width="7px" alt="to  page"></a> {% comment %} moet dynamisch  {% endcomment %}
+    </div>
+</div>
+
 {% render 'partials/footer.liquid' %}
+

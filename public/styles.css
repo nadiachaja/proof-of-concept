@@ -1,4 +1,4 @@
-body{
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -7,19 +7,19 @@ body{
 
 /*MARK: HEADER */
 
-header{
+header {
     background-color: var(--bg-general);
     display: grid;
     grid-template-columns: 1fr max-content;
     padding: 1em;
 
-    .logo{
+    .logo {
         display: flex;
         justify-self: center;
         margin: 0em 0em 0em 3em;
     }
 
-    .nav-menu{
+    .nav-menu {
         display: flex;
         justify-content: end;
     }
@@ -27,14 +27,14 @@ header{
 
 /*MARK: OVERVIEW */
 
-.catalog-search-container{
+.catalog-search-container {
     background-color: var(--bg-general);
     padding: 1em;
     margin: 1em;
     border: var(--border-gernal);
     border-radius: var(--border-radius-general);
 
-    .heading-overview{
+    .heading-overview {
         font-weight: 500;
         color: var(--text-general);
         display: flex;
@@ -42,17 +42,16 @@ header{
         font-size: var(--heading-title);
     }
 
-    .searchbar{
+    .searchbar {
         position: relative;
     }
 
-    #search{
+    #search {
         padding: 1em;
         padding-left: 3em;
         padding-right: 4em;
         width: 100%;
         border-radius: var(--border-radius-zoekbalk);
-        /* border: var(--border-secondary); */
         background-position: 1em;
         background-repeat: no-repeat;
         background-image: url(/assets/microfoon.png);
@@ -60,16 +59,74 @@ header{
         border: none;
     }
 
-    .click-search{
+    .click-search {
         position: absolute;
         right: 0em;
         width: 5em;
-        /* height: 4em; */
         height: 3.8em;
         padding: 1em;
         background-color: var(--bg-button);
         border-radius: 0px var(--border-radius-zoekbalk) var(--border-radius-zoekbalk) 0px;
-        /* border: var(--border-secondary); */
         border: none;
+    }
+}
+
+.filters-catalog {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: .5em;
+    margin: 0em 1em 0em 1em;
+    /* place-items: center; */
+
+    #auteur,
+    #plaats-van-uitgave,
+    #year,
+    #gedigitaliseerde-publicaties {
+        padding: .5em;
+        border-radius: var(--border-radius-secondary);
+        cursor: pointer;
+        font-size: var(--text-paragraph);
+        background-color: var(--bg-secondary);
+        color: var(--text-general);
+        border: none;
+    }
+}
+
+.container-resultaten {
+    padding: 1em;
+
+    .book-resultaten {
+        color: var(--text-secondary);
+        font-size: var(--text-info-detail);
+        display: flex;
+        justify-content: center;
+    }
+
+    .line {
+        display: flex;
+        justify-self: center;
+        border: none;
+        height: 2px;
+        background-color: var(--bg-general);
+        width: 15em;
+    }
+}
+
+
+.all-books {
+
+    .books-container {
+        background-color: var(--bg-general);
+        color: var(--text-general);
+        border-radius: var(--border-radius-general);
+        border: var(--border-gernal);
+        margin: 1em;
+        padding: 1em;
+    }
+
+    .books-img{
+        display: flex;
+        justify-self: center;
     }
 }

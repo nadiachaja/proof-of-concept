@@ -29,7 +29,7 @@ app.get('/', async function (request, response) {
     // };
     // const Fuse = new Fuse(list, fuseOptions);
 
-    response.render('index.liquid', { books: apiOverviewBooksJSON.data })
+    response.render('index.liquid', { booksOverview: apiOverviewBooksJSON.data })
   })
 
 

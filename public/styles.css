@@ -2,6 +2,7 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
 /*MARK: HEADER */
@@ -21,5 +22,48 @@ header{
     .nav-menu{
         display: flex;
         justify-content: end;
+    }
+}
+
+/*MARK: OVERVIEW */
+
+.catalog-search-container{
+    background-color: var(--bg-general);
+    padding: 1em;
+    margin: 1em;
+
+    .heading-overview{
+        font-weight: 500;
+        color: var(--text-general);
+        display: flex;
+        justify-content: center;
+    }
+
+    .searchbar{
+        position: relative;
+    }
+
+    #search{
+        padding: 1em;
+        padding-left: 3em;
+        padding-right: 4em;
+        width: 100%;
+        border-radius: var(--border-radius-zoekbalk);
+        border: var(--border-secondary);
+        background-position: 1em;
+        background-repeat: no-repeat;
+        background-image: url(/assets/microfoon.png);
+        font-size: var(--text-paragraph);
+    }
+
+    .click-search{
+        position: absolute;
+        right: 0em;
+        width: 5em;
+        height: 4em;
+        padding: 1em;
+        background-color: var(--bg-button);
+        border-radius: 0px var(--border-radius-zoekbalk) var(--border-radius-zoekbalk) 0px;
+        border: var(--border-secondary);
     }
 }

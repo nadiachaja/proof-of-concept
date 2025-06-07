@@ -1,0 +1,25 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*MARK: HEADER */
+
+header{
+    background-color: var(--bg-general);
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    padding: 1em;
+
+    .logo{
+        display: flex;
+        justify-self: center;
+        margin: 0em 0em 0em 3em;
+    }
+
+    .nav-menu{
+        display: flex;
+        justify-content: end;
+    }
+}

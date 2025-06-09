@@ -49,6 +49,6 @@ body {
     --text-link-button: 18px;
 
     /*DROP-SHADOW*/
-    --drop-shadow-buttons: drop-shadow( 2px 3px 4px 0px #000000);
-    --drop-shadow-cards: drop-shadow( 2px 5px 8px 0px #000000);
+    --drop-shadow-buttons: drop-shadow( 2px 3px 4px  rgba(0, 0, 0, 0.3));
+    --drop-shadow-cards: drop-shadow( 2px 5px 8px  rgba(0, 0, 0, 0.3));
 }

@@ -44,6 +44,7 @@ header {
         color: var(--text-general);
         display: flex;
         justify-content: center;
+        text-align: center;
         font-size: var(--heading-title);
     }
 
@@ -83,11 +84,19 @@ header {
 }
 
 .filters-catalog {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
     gap: .5em;
     margin: 0em 1em 0em 1em;
+    width: fit-content;
+
+    @media screen and (min-width:450px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        width: unset;
+    }
 
     @media screen and (min-width:550px) {
         width: fit-content;
@@ -97,6 +106,7 @@ header {
 
     @media screen and (min-width:850px) {
         display: flex;
+        flex-direction: row;
     }
 
 

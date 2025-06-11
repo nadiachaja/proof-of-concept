@@ -111,20 +111,14 @@ header {
     margin: 0em 1em 0em 1em;
     width: fit-content;
 
-    @media screen and (min-width:450px) {
+    @media screen and (min-width:550px) {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
         width: unset;
     }
 
-    @media screen and (min-width:550px) {
-        width: fit-content;
-        place-self: center;
-        padding: 1em;
-    }
-
-    @media screen and (min-width:850px) {
+    @media screen and (min-width:900px) {
         display: flex;
         flex-direction: row;
     }
@@ -142,6 +136,7 @@ header {
         color: var(--text-general);
         border: none;
         filter: var(--drop-shadow-buttons);
+        max-width: 250px;
 
         @media screen and (min-width:550px) {
             font-size: var(--text-link-button);
@@ -149,7 +144,7 @@ header {
     }
 }
 
-#auteur{
+/* #auteur{
     max-width: 7em;
 }
 
@@ -159,7 +154,7 @@ header {
 
 #year{
     max-width: 5em;
-}
+} */
 
 .container-resultaten {
     padding: 1em;
@@ -184,7 +179,7 @@ header {
 
 .all-books {
 
-    @media screen and (min-width:850px) {
+    @media screen and (min-width:1000px) {
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
@@ -226,6 +221,8 @@ header {
 
         @media screen and (min-width:550px) {
            align-self: center;
+           width: 200px;
+           height: 200px;
         }
     }
 

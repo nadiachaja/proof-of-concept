@@ -5,6 +5,24 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
+.skip {
+    position: absolute;
+    background-color: var(--bg-button);
+    color: var(--text-secondary);
+    border-radius: var(--border-radius-general);
+    padding: 1em;
+    margin: 1em;
+    text-decoration: none;
+    font-size: 18px;
+    z-index: 100;
+    transform: translateY(-200%);
+    transition: transform 0.3s;
+  
+    &:focus {
+      transform: translate(0%);
+    }
+  }
+
 /*MARK: HEADER */
 
 header {

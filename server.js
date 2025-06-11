@@ -16,21 +16,55 @@ app.get('/', async function (request, response) {
 
     const apiOverviewBooks = await fetch(`https://efm-student-case-proxy-api.vercel.app/overview`)
     const apiOverviewBooksJSON = await apiOverviewBooks.json()
+ 
+    // Maak een years array aan
+    let years = []
+    let authors = []
+    let plaatsVanUitgaves = []
+    // Loop door alle books (apiOverviewBooksJSON)
+    apiOverviewBooksJSON.forEach(function(book) {
+      // Stop elk jaartal van zo'n boek in die years array, als die nog niet in die array zit
+      let year;
+      let author;
+      let plaatsVanUitgave;
 
-    // const Fuse = require('fuse.js');
-    // const fuseOptions = {
-    //     keys: [
-    //         "title",
-    //         "author",
-    //         "titel",
-    //         "jaar",
-    //         "plaats van uitgave"
-    //     ]
-    // };
-    // const Fuse = new Fuse(list, fuseOptions);
+      book.metadata.forEach(function(metadata) {
+        if (metadata.field == 'jaar') {
+          year = metadata.value
+        }
+        if (metadata.field == 'auteur') {
+          author = metadata.value
+        }
+        if (metadata.field == 'plaats_van_uitgave') {
+          plaatsVanUitgave = metadata.value
+        }
+      })
+      if (!years.includes(year)) {
+        years.push(year)
+      }
+      if (!authors.includes(author)) {
+        authors.push(author)
+      }
+      if (!plaatsVanUitgaves.includes(plaatsVanUitgave)) {
+        plaatsVanUitgaves.push(plaatsVanUitgave)
+      }
+    })
+    
+    // Sorteer daarna eventueel de years array
+    years.sort()
+    authors.sort()
+    plaatsVanUitgaves.sort()
 
-    response.render('index.liquid', { booksOverview: apiOverviewBooksJSON.data })
+    response.render('index.liquid', { booksOverview: apiOverviewBooksJSON, years: years, authors: authors, plaatsVanUitgaves: plaatsVanUitgaves })
   })
+
+  app.get('/detail/:id', async function (request, response) {
+    const id = request.params.id;
+    const apiDetailBooks = await fetch(`https://efm-student-case-proxy-api.vercel.app/detail/${id}`);
+    const apiDetailBooksJSON = await apiDetailBooks.json();
+  
+    response.render('detail.liquid', { booksDetail: apiDetailBooksJSON.data });
+  });
 
 
 

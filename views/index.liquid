@@ -11,48 +11,71 @@
 
 <form class="filters-catalog">
     <select name="auteur" id="auteur">
-    <option value="">Auteur</option> {% comment %} moet dynamisch  {% endcomment %}
-    </select> 
-    
+        <option value="">Auteur</option> 
+        {% for author in authors %}
+            <option value="">{{ author }}</option>
+        {% endfor %}
+    </select>
+
     <select name="plaats van uitgave" id="plaats-van-uitgave">
-    <option value="">Plaats van uitgave</option> {% comment %} moet dynamisch  {% endcomment %}
-    </select> 
+        <option value="">Plaats van uitgave</option> 
+        {% for plaatsVanUitgave in plaatsVanUitgaves %}
+            <option value="">{{ plaatsVanUitgave }}</option>
+        {% endfor %}
+    </select>
 
     <select name="year" id="year">
-    <option value="">Jaar</option> {% comment %} moet dynamisch  {% endcomment %}
-    </select> 
+        <option value="">Jaar</option> 
+        {% for year in years %}
+            <option value="">{{ year }}</option>
+        {% endfor %}
+    </select>
 
     <select name="Gedigitaliseerde publicaties" id="gedigitaliseerde-publicaties">
-    <option value="">Gedigitaliseerde publicaties</option> 
-    </select> 
+        <option value="">Gedigitaliseerde publicaties</option>
+    </select>
 </form>
 
 <div class="container-resultaten">
-<p class="book-resultaten">30.000 resultaten </p>
-<div class="line"></div>
+    <p class="book-resultaten">30.000 resultaten </p>
+    <div class="line"></div>
 </div>
 
 <div class="all-books">
+    {% for data in booksOverview %}
     <div class="books-container">
-        <img class="books-img" src="/assets/a411f94f4622cfa7c1a87f4f79328064.jpg" height="150px" width="150px" alt="">
-        {% comment %} <picture> 
-            <source type="image/avif" srcset="?format=avif">
-            <source type="image/webp" srcset="?format=webp">
-            <img class="books-img" loading="lazy" src=""
-                width="150" height="150" alt="">
-        </picture> {% endcomment %}
-        {% comment %} moet dynamisch  {% endcomment %}
-        
+        {% if data.asset and data.asset.medium %}
+        <img class="books-img" loading="lazy" src="{{ data.asset.medium }}" width="180" height="180"
+            alt="{{ data.title }}">
+        {% endif %}
         <div class="all-text">
-        <p class="text-info">Titel: Het eerste stuck van de wercken</p> {% comment %} moet dynamisch  {% endcomment %}
-        <p class="text-info">Auteur: Teellinck, Willem</p> {% comment %} moet dynamisch  {% endcomment %}
-        <p class="text-info">Jaar: 1659</p> {% comment %} moet dynamisch  {% endcomment %}
-        <p class="text-info">Plaats van uitgave: Utrecht</p> {% comment %} moet dynamisch  {% endcomment %}
+            <p class="text-info"><span class="strong-text">Titel: </span>{{ data.title }}</p>
+            {% assign auteur = '' %}
+            {% assign jaar = '' %}
+            {% assign plaats = '' %}
+
+            {% for item in data.metadata %}
+                {% if item.label == "Auteur" %}
+                    {% assign auteur = item.value[0] %}
+                {% endif %}
+                {% if item.label == "Jaar" %}
+                    {% assign jaar = item.value %}
+                {% endif %}
+                {% if item.label == "Plaats van uitgave" %}
+                    {% assign plaats = item.value %}
+                {% endif %}
+            {% endfor %}
+
+            <p class="text-info"><span class="strong-text">Auteur: </span>{{ auteur }}</p>
+            <p class="text-info"><span class="strong-text">Jaar: </span>{{ jaar }}</p>
+            <p class="text-info"><span class="strong-text">Plaats van uitgave: </span>{{ plaats }}</p>
+            <a class="to-detail" href="/detail/{{ data.id }}">Meer informatie <img class="arrow-img"
+                    src="/assets/arrow-right.png" height="12px" width="7px" alt="to page"></a>
         </div>
-        <a class="to-detail" href="">Meer informatie <img class="arrow-img" src="/assets/arrow-right.png" height="12px" width="7px" alt="to  page"></a> {% comment %} moet dynamisch  {% endcomment %}
     </div>
+    {% endfor %}
+</div>
 
 
 
 {% render 'partials/footer.liquid' %}
-

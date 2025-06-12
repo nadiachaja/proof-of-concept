@@ -162,18 +162,6 @@ header {
     }
 }
 
-/* #auteur{
-    max-width: 7em;
-}
-
-#plaats-van-uitgave{
-    max-width: 11em;
-}
-
-#year{
-    max-width: 5em;
-} */
-
 .container-resultaten {
     padding: 1em;
 
@@ -258,8 +246,6 @@ header {
     .strong-text{
         font-weight: 500;
     }
-
-
     
     .to-detail {
         display: flex;

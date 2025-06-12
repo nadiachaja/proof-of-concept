@@ -23,7 +23,7 @@ app.get('/', async function (request, response) {
     let plaatsVanUitgaves = []
     // Loop door alle books (apiOverviewBooksJSON)
     apiOverviewBooksJSON.forEach(function(book) {
-      // Stop elk jaartal van zo'n boek in die years array, als die nog niet in die array zit
+      // Stop elk jaartal, autheur of plaats van uitgave van zo'n boek in die years array, als die nog niet in die array zit
       let year;
       let author;
       let plaatsVanUitgave;

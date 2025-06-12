@@ -3,7 +3,9 @@
 <main>
     
 <section class="catalog-search-container">
+    {% comment %} <img src="/assets/mandala1.png" width="150" height="150" alt=""> {% endcomment %}
     <h1 class="heading-overview">Online Catalougus</h1>
+    {% comment %} <img src="/assets/mandala2.png" width="150" height="150"  alt=""> {% endcomment %}
 
     <div class="searchbar">
         <input type="search" id="search" label="typ hier wat je zoekt" placeholder="Zoeken...">
@@ -51,7 +53,7 @@
             alt="{{ data.title }}">
         {% endif %}
         <div class="all-text">
-            <p class="text-info"><span class="strong-text">Titel: </span>{{ data.title }}</p>
+            <p class="text-info titel"><span class="strong-text">Titel: </span>{{ data.title }}</p>
             {% assign auteur = '' %}
             {% assign jaar = '' %}
             {% assign plaats = '' %}

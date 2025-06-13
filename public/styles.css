@@ -70,6 +70,33 @@ header {
 
 /*MARK: OVERVIEW */
 
+.mandala-left,
+.mandala-right {
+    display: none;
+}
+
+@media screen and (min-width: 1000px) {
+    .mandala-left,
+    .mandala-right {
+        display: flex;
+        justify-content: space-evenly; 
+    }
+}
+
+.catalog-search-container {
+    @media screen and (min-width: 1000px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: max-content max-content;
+    }
+}
+
+.searchbar{
+    @media screen and (min-width: 1000px) {
+        grid-column: 1 / 4;
+    }
+}
+
 .catalog-search-container {
     background-color: var(--bg-general);
     padding: 1em 1em 2em 1em;

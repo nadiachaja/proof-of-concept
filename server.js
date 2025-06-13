@@ -24,30 +24,28 @@ app.get('/', async function (request, response) {
     // Loop door alle books (apiOverviewBooksJSON)
     apiOverviewBooksJSON.forEach(function(book) {
       // Stop elk jaartal, autheur of plaats van uitgave van zo'n boek in die years array, als die nog niet in die array zit
-      let year;
-      let author;
-      let plaatsVanUitgave;
-
       book.metadata.forEach(function(metadata) {
         if (metadata.field == 'jaar') {
-          year = metadata.value
+          if (!years.includes(metadata.value)) {
+            years.push(metadata.value)
+          }
         }
         if (metadata.field == 'auteur') {
-          author = metadata.value
-        }
+          metadata.value.forEach(function(author) {
+            // clean up data
+            if (!authors.includes(author)) {
+              authors.push(author)
+            }
+          }
+        )}
+
         if (metadata.field == 'plaats_van_uitgave') {
-          plaatsVanUitgave = metadata.value
+          if (!plaatsVanUitgaves.includes(metadata.value)) {
+            plaatsVanUitgaves.push(metadata.value)
+          }
         }
       })
-      if (!years.includes(year)) {
-        years.push(year)
-      }
-      if (!authors.includes(author)) {
-        authors.push(author)
-      }
-      if (!plaatsVanUitgaves.includes(plaatsVanUitgave)) {
-        plaatsVanUitgaves.push(plaatsVanUitgave)
-      }
+      
     })
     
     // Sorteer daarna eventueel de years array

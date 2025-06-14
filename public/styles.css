@@ -123,6 +123,14 @@ header {
         }
     }
 
+    .label-search {
+        position: absolute;  
+        width: 1px;     
+        height: 1px;
+        clip: rect(0, 0, 0, 0);  
+        color: var(--text-general);
+      }
+      
     #search {
         padding: 1em;
         padding-left: 3em;
@@ -181,7 +189,7 @@ header {
         color: var(--text-general);
         border: none;
         filter: var(--drop-shadow-buttons);
-        max-width: 250px;
+        max-width: 260px;
 
         @media screen and (min-width:550px) {
             font-size: var(--text-link-button);

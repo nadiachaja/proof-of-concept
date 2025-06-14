@@ -15,36 +15,39 @@
     <img class="mandala" src="/assets/mandala6.png" width="100" height="95" alt="">
     </div>
 
-    <div class="searchbar">
-        <input type="search" id="search" label="typ hier wat je zoekt" placeholder="Zoeken...">
+    <form action="/zoekresultaten" method="GET" class="searchbar">
+    <label class="label-search" for="">typ hier het boek in wat je zoekt</label>
+        <input type="search" id="search" placeholder="Zoeken...">
         <button class="click-search"><img class="search-img" src="/assets/search.png" alt="search"></button>
-    </div>
+    </form>
 </section>
 
-<form class="filters-catalog">
+<form class="filters-catalog" id="filters-selects" method="GET" action="/filterresultaten">
     <select name="auteur" id="auteur">
         <option value="">Auteur</option> 
-        {% for author in authors %}
-            <option value="">{{ author }}</option>
+        {% for authorClean in authors %}
+            <option value="{{ authorClean }}">{{ authorClean }}</option>
         {% endfor %}
     </select>
 
     <select name="plaats van uitgave" id="plaats-van-uitgave">
         <option value="">Plaats van uitgave</option> 
-        {% for plaatsVanUitgave in plaatsVanUitgaves %}
-            <option value="">{{ plaatsVanUitgave }}</option>
+        {% for plaatsClean  in plaatsVanUitgaves %}
+            <option value="{{ plaatsClean }}">{{ plaatsClean }}</option>
         {% endfor %}
     </select>
 
     <select name="year" id="year">
         <option value="">Jaar</option> 
-        {% for year in years %}
-            <option value="">{{ year }}</option>
+        {% for yearClean in years %}
+            <option value="{{ yearClean}}">{{ yearClean}}</option>
         {% endfor %}
     </select>
 
     <select name="Gedigitaliseerde publicaties" id="gedigitaliseerde-publicaties">
         <option value="">Gedigitaliseerde publicaties</option>
+        <option value="yes">Ja</option>
+        <option value="no">Nee</option>
     </select>
 </form>
 
@@ -68,12 +71,12 @@
 
             {% for item in data.metadata %}
                 {% if item.label == "Auteur" %}
-                    {% assign auteur = item.value[0] %}
+                    {% assign auteur = item.value[0] | replace: '[', '' | replace: ']', '' %}
                 {% endif %}
                 {% if item.label == "Jaar" %}
-                    {% assign jaar = item.value %}
+                    {% assign jaar = item.value | replace: '[', '' | replace: ']', '' %}
                 {% endif %}
-                {% if item.label == "Plaats van uitgave" %}
+                {% if item.label == "Plaats van uitgave" | replace: '[', '' | replace: ']', '' %}
                     {% assign plaats = item.value %}
                 {% endif %}
             {% endfor %}

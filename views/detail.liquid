@@ -1,26 +1,87 @@
 {% render 'partials/head.liquid', title: 'Home' %}
 
 
-<main>
-
-    <img src="" alt="">
-
+<main class="detail">
+    {% assign auteur = '' %}
+    {% assign jaar = '' %}
+    {% assign plaats = '' %}
+    {% assign ubn = '' %}
+    {% assign signatuur = '' %}
+    {% assign bibliografie = '' %}
+    {% assign opmerkingen = '' %}
+    {% assign trefwoorden = '' %}
+    {% assign kopie = '' %}
+    {% assign status = '' %}
+    
+    <!-- Vul auteur -->
+    {% for item in booksDetail.metadata %}
+        {% if item.label == "Auteur" %}
+            {% assign auteur = item.value[0] %}
+        {% endif %}
+    {% endfor %}
+    
+    <!-- Vul overige metadata -->
+    {% for item in booksDetail.metadata %}
+        {% assign value = '' %}
+        {% if item.value.size %}
+            {% assign value = item.value | join: ' ' %}
+        {% else %}
+            {% assign value = item.value %}
+        {% endif %}
+        
+        {% if item.label == "Jaar" %}
+            {% assign jaar = value | replace: '[', '' | replace: ']', '' %}
+        {% elsif item.label == "Plaats van uitgave" %}
+            {% assign plaats = value | replace: '[', '' | replace: ']', '' %}
+        {% elsif item.label == "UBN" %}
+            {% assign ubn = value | replace: '[', '' | replace: ']', '' %}
+        {% elsif item.label == "Signatuur" %}
+            {% assign signatuur = value | replace: '[', '' | replace: ']', '' %}
+        {% elsif item.label == "Bibliografie" %}
+            {% assign bibliografie = value | replace: '[', '' | replace: ']', '' %}
+        {% elsif item.label == "Opmerkingen" %}
+            {% assign opmerkingen = value | replace: '[', '' | replace: ']', '' %}
+        {% elsif item.label == "Trefwoorden" %}
+            {% assign trefwoorden = value | replace: '[', '' | replace: ']', '' %}
+        {% elsif item.label == "Aantal kopieën" %}
+            {% assign kopie = value | replace: '[', '' | replace: ']', '' %}
+        {% elsif item.label == "Status" %}
+            {% assign status = value | replace: '[', '' | replace: ']', '' %}
+        {% endif %}
+    {% endfor %}
+    
+    <!-- alle images van het boek -->
+     <div class="carousel buttons-carousel markers-carousel">
+    {% for img in booksDetail.assets %}
+      {% if img.medium %}
+        <img class="detail-book-img" loading="lazy" src="{{ img.medium }}" width="180" height="180"
+             alt="{{ booksDetail.title }}">
+      {% endif %}
+    {% endfor %}
+     </div>
+    
     <section>
-        <h1>{{ booksDetail.title }}</h1>
-        <p></p>
-        <img src="" alt="">
+      <h1>{{ booksDetail.title }}</h1>
+      <p>{{ auteur }}</p>
+      <button class="btn-share">
+      <img class="share" loading="lazy" src="/assets/delen.svg" width="40" height="40"
+      alt="delen">
+      </button>
     </section>
-
-    <div>
-        <div class="container">
-            <p><span>Jaar</span><span>:</span><span></span></p>
-            <p><span>Plaats van uitgave</span><span>:</span><span></span></p>
-            <p><span>UBN</span><span>:</span><span></span></p>
-            <p><span>Signatuur</span><span>:</span><span></span></p>
-            <p><span>Opmerkingen</span><span>:</span><span></span></p>
-            <p><span>Bibliografie</span><span>:</span><span></span></p>
-        </div>
+    
+    <div class="container">
+        <p><span>Jaar</span><span>:</span> {{ jaar }}</p>
+        <p><span>Plaats van uitgave</span><span>:</span> {{ plaats }}</p>
+        <p><span>UBN</span><span>:</span> {{ ubn }}</p>
+        <p><span>Signatuur</span><span>:</span> {{ signatuur }}</p>
+        <p><span>Bibliografie</span><span>:</span> {{ bibliografie }}</p>
+        <p><span>Opmerkingen</span><span>:</span> {{ opmerkingen }}</p>
+        <p><span>Trefwoorden</span><span>:</span> {{ trefwoorden }}</p>
+        <p><span>Aantal kopieën</span><span>:</span> {{ kopie }}</p>
+        <p><span>Status</span><span>:</span> {{ status }}</p>
     </div>
+    </div>
+
 
 
     <section>

@@ -171,7 +171,7 @@ header {
         width: unset;
     }
 
-    @media screen and (min-width:900px) {
+    @media screen and (min-width:950px) {
         display: flex;
         flex-direction: row;
     }
@@ -300,3 +300,51 @@ header {
         align-self: center;
     }
 }
+
+
+
+/*MARK: DETAIL */
+
+.carousel {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    display: flex;
+    anchor-name: --carousel;
+    margin: 1em 4em 1em 4em;
+    gap: 1em;
+}
+
+.detail-book-img{
+    scroll-snap-align: center;
+}
+
+.buttons-carousel{
+    &::scroll-button(*) {
+        position: fixed;
+        position-anchor: --carousel;
+        background-color: var(--bg-secondary);
+        width: 3em;
+        height: 3em;
+        border-radius: var(--border-radius-secondary);
+        border: none;
+        margin: .5em;
+      }
+    
+      &::scroll-button(right) {
+        position-area: inline-end center;
+        content: "⮕" / "Scroll Right";
+        color: var(--text-general);
+      }
+    
+      &::scroll-button(left) {
+        position-area: inline-start center;
+        content: "⬅" / "Scroll Left";
+        color: var(--text-general);
+      }
+
+      &::scroll-button(*):disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+     }
+}
+

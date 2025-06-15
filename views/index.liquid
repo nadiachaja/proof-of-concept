@@ -18,7 +18,7 @@
     <form action="/zoekresultaten" method="GET" class="searchbar">
     <label class="label-search" for="">typ hier het boek in wat je zoekt</label>
         <input type="search" id="search" placeholder="Zoeken...">
-        <button class="click-search"><img class="search-img" src="/assets/search.png" alt="search"></button>
+        <button class="click-search"><img class="search-img" src="/assets/search.png" width="24" height="24" alt="search"></button>
     </form>
 </section>
 
@@ -64,7 +64,7 @@
             alt="{{ data.title }}">
         {% endif %}
         <div class="all-text">
-            <p class="text-info titel"><span class="strong-text">Titel: </span>{{ data.title }}</p>
+            <p class="text-info titel"><span class="strong-text">Titel: </span>{{ data.title | replace: '[', '' | replace: ']', '' }}</p>
             {% assign auteur = '' %}
             {% assign jaar = '' %}
             {% assign plaats = '' %}

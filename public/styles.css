@@ -328,6 +328,7 @@ header {
         border-radius: var(--border-radius-secondary);
         border: none;
         margin: .5em;
+        filter: var(--drop-shadow-buttons);
       }
     
       &::scroll-button(right) {
@@ -346,5 +347,12 @@ header {
         opacity: 0.6;
         cursor: not-allowed;
      }
+
+     &::scroll-button(*):not(:disabled):is(:hover, :active) {
+        transform: scale(1.05);
+        transition: all 0.3s ease;
+        filter:var(--drop-shadow-buttons);
+        cursor: pointer;
+    }
 }
 

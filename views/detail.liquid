@@ -92,20 +92,21 @@
         <div class="wrapper-container">
             <p class="text-reactie">Reactie</p>
             <form class="form-reactie" action="/detail/{{ booksDetail.id }}" method="post">
-            <input type="text" name="reactie" id="reactie" placeholder="Schrijf hier je reactie">
+            <input type="text" name="reactie" id="reactie" placeholder="Schrijf hier je reactie" required>
             <button class="post-reactie" type="submit"><p class="text-btn-post">post</p></button>
             </form>
         </div>
     </section>
 
+ 
     <div class="container-comment">
-        {% if message in messages %}
+        {% if message in messages > 0 %}
         {% for message in messages %}
             <p class="comments">{{ message.text }}</p>
         {% endfor %}
         {% else %}
-        <div class="empty_state">
-            <h3 class="empty-no-reactie">geen reacties gevonden</h3>
+        <div class="empty-state">
+            <h3 class="empty-no-reactie">Geen reacties gevonden</h3>
             <p class="empty-no-submit">Schrijf hier een reactie</p>
         </div>
     {% endif %}

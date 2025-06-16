@@ -320,18 +320,22 @@ header {
     align-items: center;
     width: fit-content;
 
-    .back {
-        display: flex;
-        margin: 1em;
-    
-        @media screen and (min-width:1000px) {
-           grid-column: 1;
-        }
+    @media screen and (min-width:1000px) {
+        position: fixed;
     }
-    
-    .text-back{
-        color: var(--text-secondary);
+}
+
+.back {
+    display: flex;
+    margin: 1em;
+
+    @media screen and (min-width:1000px) {
+       grid-column: 1;
     }
+}
+
+.text-back{
+    color: var(--text-secondary);
 }
 
 .carousel {
@@ -344,6 +348,10 @@ header {
 
     @media screen and (min-width:1000px) {
         grid-column: 1;
+        position: sticky;
+        top: 250px; /* afstand vanaf bovenkant viewport */
+        align-self: start;
+        z-index: 10;
      }
 }
 
@@ -354,6 +362,11 @@ header {
         width: 300px;
         height: 300px;
      }
+
+     @media screen and (min-width:1280px) {
+        width: 350px;
+        height: 350px;
+     }
 }
 
 .buttons-carousel {
@@ -361,8 +374,8 @@ header {
         position: fixed;
         position-anchor: --carousel;
         background-color: var(--bg-secondary);
-        width: 3em;
-        height: 3em;
+        width: 3.5em;
+        height: 3.5em;
         border-radius: var(--border-radius-secondary);
         border: none;
         margin: .5em;
@@ -405,6 +418,7 @@ header {
 .titel-book {
     display: flex;
     text-align: center;
+    justify-content: center;
     font-size: var(--heading-title);
 }
 
@@ -421,6 +435,7 @@ header {
     margin: 1.5em;
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 
 
@@ -470,7 +485,6 @@ header {
         background-color: var(--bg-general);
         border-radius: var(--border-radius-general);
         width: 100%;
-        height: 100%;
         display: flex;
         flex-direction: column;
         align-self: center;
@@ -509,6 +523,7 @@ header {
         display: flex;
         margin: auto;
         padding: 1em;
+        cursor: pointer;
     }
 }
 
@@ -517,19 +532,36 @@ header {
     border-radius: var(--border-radius-general);
     margin: 1em;
     padding: 1em;
-    grid-column: 2;
 
-    .comments {
-        background-color: var(--bg-body);
-        border-radius: var(--border-radius-secondary);
-        padding: 1em;
+    @media screen and (min-width:1000px) {
+        grid-column: 2;
     }
 }
 
-.empty_state{
+.comments {
+    background-color: var(--bg-body);
+    border-radius: var(--border-radius-secondary);
+    padding: 1em;
+}
+
+/* .empty-state{
     background-color: var(--bg-general);
+    border-radius: var(--border-radius-general);
     color: var(--text-general);
     font-size: var(--text-info-detail);
     font-weight: 500;
     margin: 1em;
+} */
+
+.empty-no-reactie, 
+.empty-no-submit{
+    color: var(--text-general);
+}
+
+.empty-no-reactie{
+    font-size: var(--text-link-button);
+}    
+
+.empty-no-submit{
+    font-size: var(--text-paragraph);
 }

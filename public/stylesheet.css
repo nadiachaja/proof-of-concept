@@ -45,6 +45,7 @@ body {
     /*FONT-SIZE*/
     --heading-title: clamp(1.6875rem, 1.525rem + 0.8125vw, 2.5rem);
     --subtitle: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+    --subtitle-detail: clamp(1.125rem, 0.6563rem + 1.5vw, 1.5rem);
     --text-info-detail: clamp(1rem, 0.975rem + 0.125vw, 1.125rem);
     --text-paragraph: 16px;
     --text-link-button: 18px;

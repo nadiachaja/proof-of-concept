@@ -305,6 +305,10 @@ header {
 
 /*MARK: DETAIL */
 
+.back{
+    margin: 1em;
+}
+
 .carousel {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -356,3 +360,85 @@ header {
     }
 }
 
+.container-title{
+    margin: 2em;
+}
+
+.titel-book{
+    display: flex;
+    text-align: center;
+    font-size: var(--heading-title);
+}
+
+.auteur-book{
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    font-size: var(--subtitle-detail);
+}
+
+.btn-share{
+    display: flex;
+    justify-self: center;
+    margin: 1.5em;
+    background-color: transparent;
+    border: none;
+}
+
+
+.container-info-book{
+    background-color: var(--bg-general);
+    border-radius: var(--border-radius-general);
+    margin: 1em;
+    padding: 1em;
+}
+
+.info-book{
+    color: var(--text-secondary);
+    background-color: var(--bg-body);
+    padding: .5em;
+    border-radius: var(--border-radius-secondary);
+    font-weight: 500;
+    font-size: var(--text-link-button);
+}
+
+.info-book-answer{
+    font-weight: 400;
+}
+
+.container-reacties{
+    margin: 1em;
+
+    .subtitle-detail{
+        margin: 2em 0em 1em 0em;
+    }
+
+    .wrapper-container{
+        background-color: var(--bg-general);
+        border-radius: var(--border-radius-general);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .text-reactie{
+        padding: 1em 1em 0em 1em;
+        color: var(--text-general);
+        font-size: var(--subtitle);
+        display: flex;
+        align-self: start;
+    }
+
+    #reactie{
+        padding: 1em;
+        margin: 1em;
+        border-radius: var(--border-radius-zoekbalk);
+        font-size: var(--text-paragraph);
+        width: 75%;
+        max-width: 450px;
+        display: flex;
+        justify-self: center;
+}
+}

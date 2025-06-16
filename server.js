@@ -87,7 +87,6 @@ app.get('/detail/:id', async function (request, response) {
   }
 });
 
-
   app.use((req, res) => {
     res.status(404).send('Pagina niet gevonden');
   });

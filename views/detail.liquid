@@ -49,49 +49,52 @@
             {% assign status = value | replace: '[', '' | replace: ']', '' %}
         {% endif %}
     {% endfor %}
+
+    
+    <a href="/">
+        <img class="back" src="/assets/back.svg" width="50" height="50" alt="back">
+    </a>
     
     <!-- alle images van het boek -->
-     <div class="carousel buttons-carousel markers-carousel">
+     <div class="carousel buttons-carousel">
     {% for img in booksDetail.assets %}
       {% if img.medium %}
-        <img class="detail-book-img" loading="lazy" src="{{ img.medium }}" width="180" height="180"
+        <img class="detail-book-img" loading="lazy" src="{{ img.medium }}" width="200" height="200"
              alt="{{ booksDetail.title }}">
       {% endif %}
     {% endfor %}
      </div>
     
-    <section>
-      <h1>{{ booksDetail.title }}</h1>
-      <p>{{ auteur }}</p>
+    <section class="container-title">
+      <h1 class="titel-book">{{ booksDetail.title }}</h1>
+      <p class="auteur-book">{{ auteur }}</p>
       <button class="btn-share">
       <img class="share" loading="lazy" src="/assets/delen.svg" width="40" height="40"
       alt="delen">
       </button>
     </section>
     
-    <div class="container">
-        <p><span>Jaar</span><span>:</span> {{ jaar }}</p>
-        <p><span>Plaats van uitgave</span><span>:</span> {{ plaats }}</p>
-        <p><span>UBN</span><span>:</span> {{ ubn }}</p>
-        <p><span>Signatuur</span><span>:</span> {{ signatuur }}</p>
-        <p><span>Bibliografie</span><span>:</span> {{ bibliografie }}</p>
-        <p><span>Opmerkingen</span><span>:</span> {{ opmerkingen }}</p>
-        <p><span>Trefwoorden</span><span>:</span> {{ trefwoorden }}</p>
-        <p><span>Aantal kopieën</span><span>:</span> {{ kopie }}</p>
-        <p><span>Status</span><span>:</span> {{ status }}</p>
+    <div class="container-info-book">
+        <p class="info-book">Jaar: <span class="info-book-answer">{{ jaar }}</span></p>
+        <p class="info-book">Plaats van uitgave: <span class="info-book-answer">{{ plaats }}</span></p>
+        <p class="info-book">UBN: <span class="info-book-answer">{{ ubn }}</span></p>
+        <p class="info-book">Signatuur: <span class="info-book-answer">{{ signatuur }}</span></p>
+        <p class="info-book">Bibliografie: <span class="info-book-answer">{{ bibliografie }}</span></p>
+        <p class="info-book">Opmerkingen: <span class="info-book-answer">{{ opmerkingen }}</span></p>
+        <p class="info-book">Trefwoorden: <span class="info-book-answer">{{ trefwoorden }}</span></p>
+        <p class="info-book">Aantal kopieën: <span class="info-book-answer">{{ kopie }}</span></p>
+        <p class="info-book">Status: <span class="info-book-answer">{{ status }}</span></p>
     </div>
     </div>
 
-
-
-    <section>
-        <h2></h2>
-        <div>
-            <p></p>
-            <input type="text" name="" id="">
-
-            <p></p>
-            <input type="text" name="" id="">
+    <section class="container-reacties">
+        <h2 class="subtitle-detail">Reacties</h2>
+        <div class="wrapper-container">
+            <p class="text-reactie">Reactie</p>
+            <form class="form-reactie" action="/detail/{{ data.id }}" method="post">
+            <input type="text" name="reactie" id="reactie" placeholder="Schrijf hier je reactie">
+            <button class="post-reactie" type="submit"><p class="text-btn-post">post</p></button>
+            </form>
         </div>
     </section>
 

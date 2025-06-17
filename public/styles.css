@@ -176,26 +176,89 @@ header {
         display: flex;
         flex-direction: row;
     }
+}
 
+#auteur,
+#plaats-van-uitgave,
+#year,
+#gedigitaliseerde-publicaties {
+  padding: .5em;
+  border-radius: var(--border-radius-secondary);
+  cursor: pointer;
+  font-size: var(--text-paragraph);
+  background-color: var(--bg-secondary);
+  color: var(--text-general);
+  border: none;
+  filter: var(--drop-shadow-buttons);
 
-    #auteur,
-    #plaats-van-uitgave,
-    #year,
-    #gedigitaliseerde-publicaties {
-        padding: .5em;
-        border-radius: var(--border-radius-secondary);
-        cursor: pointer;
-        font-size: var(--text-paragraph);
-        background-color: var(--bg-secondary);
-        color: var(--text-general);
-        border: none;
-        filter: var(--drop-shadow-buttons);
-        max-width: 260px;
+  @media screen and (min-width: 550px) {
+    font-size: var(--text-link-button);
+  }
+}
 
-        @media screen and (min-width:550px) {
-            font-size: var(--text-link-button);
-        }
-    }
+@supports (appearance: base-select) {
+
+  #auteur,
+  #plaats-van-uitgave,
+  #year,
+  #gedigitaliseerde-publicaties {
+    appearance: base-select;
+  }
+
+  #auteur::picker(select),
+  #plaats-van-uitgave::picker(select),
+  #year::picker(select),
+  #gedigitaliseerde-publicaties::picker(select) {
+    appearance: base-select;
+    padding: .5em;
+    margin-bottom: .5em;
+    border: var(--border-secondary);
+    background: var(--bg-button);
+    border-radius: var(--border-radius-general);
+    font-weight: 400;
+  }
+
+  #auteur::picker-icon,
+  #plaats-van-uitgave::picker-icon,
+  #year::picker-icon,
+  #gedigitaliseerde-publicaties::picker-icon {
+    content: "";
+    display: flex;
+    align-self: center;
+    width: .5em;
+    height: .5em;
+    background-color: var(--bg-body);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transition: transform 0.5s;
+  }
+
+  #auteur:open::picker-icon,
+  #plaats-van-uitgave:open::picker-icon,
+  #year:open::picker-icon,
+  #gedigitaliseerde-publicaties:open::picker-icon {
+    transform: rotate(180deg);
+  }
+
+  option {
+    padding: .5em;
+    border-top: var(--border-secondary);
+    cursor: pointer;
+    transition: color 0.2s ease-out;
+    color: var(--text-secondary);
+    font-size: var(--text-paragraph);
+  }
+
+  option:where(:hover, :focus, :active),
+  option:checked {
+    background: var(--bg-secondary);
+    color: var(--text-general);
+  }
+
+  option:checked::checkmark {
+    content: url("/assets/check.svg"); 
+    width: 1.5em;
+    height: 1.5em;
+  }
 }
 
 .container-resultaten {
@@ -306,7 +369,7 @@ header {
 
 /*MARK: DETAIL */
 
-.detail{
+.detail {
     @media screen and (min-width:1000px) {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -314,7 +377,7 @@ header {
     }
 }
 
-.link{
+.link {
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -330,11 +393,11 @@ header {
     margin: 1em;
 
     @media screen and (min-width:1000px) {
-       grid-column: 1;
+        grid-column: 1;
     }
 }
 
-.text-back{
+.text-back {
     color: var(--text-secondary);
 }
 
@@ -349,24 +412,30 @@ header {
     @media screen and (min-width:1000px) {
         grid-column: 1;
         position: sticky;
-        top: 250px; /* afstand vanaf bovenkant viewport */
+        top: 250px;
+        /* afstand vanaf bovenkant viewport */
         align-self: start;
         z-index: 10;
-     }
+    }
 }
 
 .detail-book-img {
     scroll-snap-align: center;
 
-    @media screen and (min-width:1000px) {
+    @media screen and (min-width:400px) {
+        width: 250px;
+        height: 250px;
+    }
+
+    @media screen and (min-width:600px) {
         width: 300px;
         height: 300px;
-     }
+    }
 
-     @media screen and (min-width:1280px) {
+    @media screen and (min-width:1280px) {
         width: 350px;
         height: 350px;
-     }
+    }
 }
 
 .buttons-carousel {
@@ -412,7 +481,7 @@ header {
 
     @media screen and (min-width:1000px) {
         grid-column: 2;
-     }
+    }
 }
 
 .titel-book {
@@ -453,7 +522,7 @@ header {
 
     @media screen and (min-width:1000px) {
         grid-column: 2;
-     }
+    }
 }
 
 .info-book {
@@ -504,7 +573,7 @@ header {
         border-radius: var(--border-radius-zoekbalk);
         font-size: var(--text-paragraph);
         width: 75%;
-        max-width: 450px;
+        max-width: 550px;
         display: flex;
         justify-self: center;
     }
@@ -544,24 +613,15 @@ header {
     padding: 1em;
 }
 
-/* .empty-state{
-    background-color: var(--bg-general);
-    border-radius: var(--border-radius-general);
-    color: var(--text-general);
-    font-size: var(--text-info-detail);
-    font-weight: 500;
-    margin: 1em;
-} */
-
-.empty-no-reactie, 
-.empty-no-submit{
+.empty-no-reactie,
+.empty-no-submit {
     color: var(--text-general);
 }
 
-.empty-no-reactie{
+.empty-no-reactie {
     font-size: var(--text-link-button);
-}    
+}
 
-.empty-no-submit{
+.empty-no-submit {
     font-size: var(--text-paragraph);
 }

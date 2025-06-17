@@ -92,7 +92,8 @@
         <div class="wrapper-container">
             <p class="text-reactie">Reactie</p>
             <form class="form-reactie" action="/detail/{{ booksDetail.id }}" method="post">
-            <input type="text" name="reactie" id="reactie" placeholder="Schrijf hier je reactie" required>
+            <textarea type="text" name="reactie" id="reactie" placeholder="Schrijf hier je reactie" required></textarea>
+
             <button class="post-reactie" type="submit"><p class="text-btn-post">post</p></button>
             </form>
         </div>

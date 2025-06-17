@@ -144,7 +144,7 @@ header {
         font-size: var(--text-paragraph);
         border: none;
     }
-
+    
     .click-search {
         position: absolute;
         right: 0em;
@@ -625,3 +625,7 @@ header {
 .empty-no-submit {
     font-size: var(--text-paragraph);
 }
+
+@view-transition {
+    navigation: auto;
+  }

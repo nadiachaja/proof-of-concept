@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/fdnd-task/proof-of-concept#readme",
   "dependencies": {
+    "compression": "^1.8.0",
     "express": "^5.0.1",
     "fuse.js": "^7.1.0",
     "liquidjs": "^10.21.0"

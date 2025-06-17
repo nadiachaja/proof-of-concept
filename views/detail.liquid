@@ -1,4 +1,4 @@
-{% render 'partials/head.liquid', title: 'Home' %}
+{% render 'partials/head.liquid', title: booksDetail.title %}
 
 
 <main class="detail">
@@ -13,14 +13,14 @@
     {% assign kopie = '' %}
     {% assign status = '' %}
     
-    <!-- Vul auteur -->
+    <!-- auteur -->
     {% for item in booksDetail.metadata %}
         {% if item.label == "Auteur" %}
-            {% assign auteur = item.value[0] %}
+            {% assign auteur = item.value[0] | replace: '[', '' | replace: ']', '' %}
         {% endif %}
     {% endfor %}
     
-    <!-- Vul overige metadata -->
+    <!-- info-->
     {% for item in booksDetail.metadata %}
         {% assign value = '' %}
         {% if item.value.size %}
@@ -55,7 +55,7 @@
         <p><img class="back" src="/assets/back.svg" width="50" height="50" alt="back"><p class="text-back">Teug naar overview</p>
     </a>
     
-    <!-- alle images van het boek -->
+    <!-- img -->
      <div class="carousel buttons-carousel">
     {% for img in booksDetail.assets %}
       {% if img.medium %}

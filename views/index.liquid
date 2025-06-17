@@ -1,97 +1,125 @@
 {% render 'partials/head.liquid', title: 'Online catalogus' %}
 
 <main>
-    
-<section class="catalog-search-container">
-    <div class="mandala-left">
-    <img class="mandala" src="/assets/mandala1.png" width="160" height="160" alt="">
-    <img class="mandala" src="/assets/mandala5.png" width="100" height="100" alt="">
-    <img class="mandala" src="/assets/mandala3.png" width="140" height="130"  alt="">
-    </div>
-    <h1 class="heading-overview">Online Catalogus</h1>
-    <div class="mandala-right">
-    <img class="mandala" src="/assets/mandala2.png" width="125" height="125"  alt="">
-    <img class="mandala" src="/assets/mandala4.png" width="130" height="120" alt="">
-    <img class="mandala" src="/assets/mandala6.png" width="100" height="95" alt="">
-    </div>
 
-    <form action="/zoekresultaten" method="GET" class="searchbar">
-    <label class="label-search" for="">typ hier het boek in wat je zoekt</label>
-        <input type="search" id="search" placeholder="Zoeken...">
-        <button class="click-search"><img class="search-img" src="/assets/search.png" width="24" height="24" alt="search"></button>
-    </form>
-</section>
+    <section class="catalog-search-container">
+        <div class="mandala-left">
+            <picture>
+                <source type="image/avif" srcset="/assets/mandala1.avif">
+                <source type="image/webp" srcset="/assets/mandala1.webp">
+                <img class="mandala" src="/assets/mandala1.png" width="160" height="160" alt="">
+            </picture>
+            <picture>
+                <source type="image/avif" srcset="/assets/mandala5.avif">
+                <source type="image/webp" srcset="/assets/mandala5.webp">
+                <img class="mandala" src="/assets/mandala5.png" width="100" height="100" alt="">
+            </picture>
+            <picture>
+                <source type="image/avif" srcset="/assets/mandala3.avif">
+                <source type="image/webp" srcset="/assets/mandala3.webp">
+                <img class="mandala" src="/assets/mandala3.png" width="140" height="130" alt="">
+            </picture>
+        </div>
+        <h1 class="heading-overview">Online Catalogus</h1>
+        <div class="mandala-right">
+            <picture>
+                <source type="image/avif" srcset="/assets/mandala2.avif">
+                <source type="image/webp" srcset="/assets/mandala2.webp">
+                <img class="mandala" src="/assets/mandala2.png" width="125" height="125" alt="">
+            </picture>
+            <picture>
+                <source type="image/avif" srcset="/assets/mandala4.avif">
+                <source type="image/webp" srcset="/assets/mandala4.webp">
+                <img class="mandala" src="/assets/mandala4.png" width="130" height="120" alt="">
+            </picture>
+            <picture>
+                <source type="image/avif" srcset="/assets/mandala6.avif">
+                <source type="image/webp" srcset="/assets/mandala6.webp">
+                <img class="mandala" src="/assets/mandala6.png" width="100" height="95" alt="">
+            </picture>
+        </div>
 
-<form class="filters-catalog" id="filters-selects" method="GET" action="/filterresultaten">
-    <select name="auteur" id="auteur">
-        <option value="">Auteur</option> 
-        {% for authorClean in authors %}
+        <form action="/zoekresultaten" method="GET" class="searchbar">
+            <label class="label-search" for="">typ hier het boek in wat je zoekt</label>
+            <input type="search" id="search" placeholder="Zoeken...">
+            <button class="click-search"><img class="search-img" src="/assets/search.png" width="24" height="24"
+                    alt="search"></button>
+        </form>
+    </section>
+
+    <form class="filters-catalog" id="filters-selects" method="GET" action="/filterresultaten">
+        <select name="auteur" id="auteur">
+            <option value="">Auteur</option>
+            {% for authorClean in authors %}
             <option value="{{ authorClean }}">{{ authorClean }}</option>
-        {% endfor %}
-    </select>
+            {% endfor %}
+        </select>
 
-    <select name="plaats van uitgave" id="plaats-van-uitgave">
-        <option value="">Plaats van uitgave</option> 
-        {% for plaatsClean  in plaatsVanUitgaves %}
+        <select name="plaats van uitgave" id="plaats-van-uitgave">
+            <option value="">Plaats van uitgave</option>
+            {% for plaatsClean in plaatsVanUitgaves %}
             <option value="{{ plaatsClean }}">{{ plaatsClean }}</option>
-        {% endfor %}
-    </select>
+            {% endfor %}
+        </select>
 
-    <select name="year" id="year">
-        <option value="">Jaar</option> 
-        {% for yearClean in years %}
+        <select name="year" id="year">
+            <option value="">Jaar</option>
+            {% for yearClean in years %}
             <option value="{{ yearClean}}">{{ yearClean}}</option>
-        {% endfor %}
-    </select>
+            {% endfor %}
+        </select>
 
-    <select name="Gedigitaliseerde publicaties" id="gedigitaliseerde-publicaties">
-        <option value="">Gedigitaliseerde publicaties</option>
-        <option value="yes">Ja</option>
-        <option value="no">Nee</option>
-    </select>
-</form>
+        <select name="Gedigitaliseerde publicaties" id="gedigitaliseerde-publicaties">
+            <option value="">Gedigitaliseerde publicaties</option>
+            <option value="yes">Ja</option>
+            <option value="no">Nee</option>
+        </select>
+    </form>
 
-<div class="container-resultaten">
-    <p class="book-resultaten">30.000 resultaten </p>
-    <div class="line"></div>
-</div>
+    <div class="container-resultaten">
+        <p class="book-resultaten">25 resultaten </p>
+        <div class="line"></div>
+    </div>
 
-<div class="all-books">
-    {% for data in booksOverview %}
-    <div class="books-container">
-        {% if data.asset and data.asset.medium %}
-        <img class="books-img" loading="lazy" src="{{ data.asset.medium }}" width="180" height="180"
-            alt="{{ data.title }}">
-        {% endif %}
-        <div class="all-text">
-            <p class="text-info titel"><span class="strong-text">Titel: </span>{{ data.title | replace: '[', '' | replace: ']', '' }}</p>
-            {% assign auteur = '' %}
-            {% assign jaar = '' %}
-            {% assign plaats = '' %}
+    <div class="all-books">
+        {% for data in booksOverview %}
+        <div class="books-container">
+            {% if data.asset and data.asset.medium %}
+            <img class="books-img" loading="lazy" src="{{ data.asset.medium }}" width="180" height="180" alt="{{ data.title }}">
+            {% endif %}
+            <div class="all-text">
+                <p class="text-info titel"><span class="strong-text">Titel: </span>{{ data.title | replace: '[', '' | replace: ']', '' }}</p>
+                {% assign auteur = '' %}
+                {% assign jaar = '' %}
+                {% assign plaats = '' %}
 
-            {% for item in data.metadata %}
+                {% for item in data.metadata %}
                 {% if item.label == "Auteur" %}
-                    {% assign auteur = item.value[0] | replace: '[', '' | replace: ']', '' %}
+                {% assign auteur = item.value[0] | replace: '[', '' | replace: ']', '' %} <!-- replace haalt de [] weg om het woord -->
                 {% endif %}
                 {% if item.label == "Jaar" %}
-                    {% assign jaar = item.value | replace: '[', '' | replace: ']', '' %}
+                {% assign jaar = item.value | replace: '[', '' | replace: ']', '' %}
                 {% endif %}
                 {% assign clean_label = item.label | replace: '[', '' | replace: ']', '' %}
                 {% if clean_label == "Plaats van uitgave" %}
-                  {% assign plaats = item.value[0] %}
+                {% assign plaats = item.value[0] %}
                 {% endif %}
-            {% endfor %}
+                {% endfor %}
 
-            <p class="text-info"><span class="strong-text">Auteur: </span>{{ auteur }}</p>
-            <p class="text-info"><span class="strong-text">Jaar: </span>{{ jaar }}</p>
-            <p class="text-info"><span class="strong-text">Plaats van uitgave: </span>{{ plaats }}</p>
-            <a class="to-detail" href="/detail/{{ data.id }}">Meer informatie <img class="arrow-img"
-                    src="/assets/arrow-right.png" height="12px" width="7px" alt="to page"></a>
+                <p class="text-info"><span class="strong-text">Auteur: </span>{{ auteur }}</p>
+                <p class="text-info"><span class="strong-text">Jaar: </span>{{ jaar }}</p>
+                <p class="text-info"><span class="strong-text">Plaats van uitgave: </span>{{ plaats }}</p>
+                <a class="to-detail" href="/detail/{{ data.id }}">Meer informatie
+                    <picture>
+                        <source type="image/avif" srcset="/assets/arrow-right.avif">
+                        <source type="image/webp" srcset="/assets/arrow-right.webp">
+                        <img class="mandala" src="/assets/arrow-right.png" width="7" height="12" alt="to detailpage">
+                    </picture>
+                </a>
+            </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
 </main>
-
 
 {% render 'partials/footer.liquid' %}

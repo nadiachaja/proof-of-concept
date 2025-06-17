@@ -5,6 +5,9 @@ import { Liquid } from 'liquidjs';
 const app = express()
 app.use(express.static('public'))
 
+import compression from 'compression';
+app.use(compression()); // zorgt ervoor dat html, css, js Gzip compressie toepast (is voor performance)
+
 const engine = new Liquid();
 app.engine('liquid', engine.express());
 

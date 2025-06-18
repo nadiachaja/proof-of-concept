@@ -657,11 +657,6 @@ header {
     font-size: var(--text-paragraph);
 }
 
-@view-transition {
-    navigation: auto;
-  }
-
-
   .post-reactie .loading {
     content: url('/assets/loading.svg');
     font-size: 16px;
@@ -677,8 +672,6 @@ header {
         transform: rotate(360deg);
     }
 }
-
-
 
 .confetti {
 	width:calc( .25em + 2em * var(--size));
@@ -713,3 +706,7 @@ header {
 	}
 }
 
+
+@view-transition {
+    navigation: auto;
+  }

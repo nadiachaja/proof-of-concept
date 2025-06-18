@@ -12,7 +12,3 @@ inputSearchbar.addEventListener('input', () => {
     }
   });
 });
-
-
-
-

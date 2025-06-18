@@ -58,12 +58,12 @@
     <!-- img -->
     <div class="carousel buttons-carousel">
         {% for img in booksDetail.assets %}
-        {% if img.medium %}
-        <img class="detail-book-img" loading="lazy" src="{{ img.medium }}" width="200" height="200"
-            alt="{{ booksDetail.title }}">
-        {% endif %}
+          {% if img.medium %}
+            <img class="detail-book-img" loading="lazy" src="{{ img.medium }}" width="200" height="200"
+                 alt="{{ booksDetail.title }}">
+          {% endif %}
         {% endfor %}
-    </div>
+      </div>
 
     <section class="container-title">
         <h1 class="titel-book">{{ booksDetail.title }}</h1>

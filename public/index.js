@@ -12,3 +12,20 @@ inputSearchbar.addEventListener('input', () => {
     }
   });
 });
+
+
+window.addEventListener("mousemove", (e) => {
+  gsap.to(".cursor", {
+    x: e.clientX,
+    y: e.clientY
+  });
+  if (e.target.nodeName == "A" || e.target.closest('a')) {
+    gsap.to(".cursor", {
+      scale: 1
+    });
+  } else {
+    gsap.to(".cursor", {
+      scale: 0
+    });
+  }
+});

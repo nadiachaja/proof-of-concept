@@ -23,6 +23,20 @@ body {
     }
 }
 
+.cursor {
+    border: var(--cursor);
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: var(--border-radius-general);
+    scale: 0;
+    
+    position: fixed;
+    top: -1.5rem;
+    left: -1.5rem;
+    z-index: 12;
+    pointer-events: none; /*is voor dat cursor niet klikbaar wordt */
+  }
+
 /*MARK: HEADER */
 
 header {

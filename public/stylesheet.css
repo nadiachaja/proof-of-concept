@@ -39,6 +39,7 @@ body {
     --border-gernal: 3px solid var(--bg-button);
     --border-secondary: 1px solid var(--bg-general);
     --border-header-scroll: 5px solid var(--bg-button);
+    --cursor: 5px solid var(--bg-secondary);
 
     /*FONT-SIZE*/
     --heading-title: clamp(1.6875rem, 1.525rem + 0.8125vw, 2.5rem);

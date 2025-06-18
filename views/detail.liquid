@@ -101,17 +101,17 @@
 
  
     <div class="container-comment">
-        {% if message in messages > 0 %}
-        {% for message in messages %}
+        {% if messages and messages.size > 0  %}
+          {% for message in messages %}
             <p class="comments">{{ message.text }}</p>
-        {% endfor %}
+          {% endfor %}
         {% else %}
-        <div class="empty-state">
+          <div class="empty-state">
             <h3 class="empty-no-reactie">Geen reacties gevonden</h3>
             <p class="empty-no-submit">Schrijf hier een reactie</p>
-        </div>
-    {% endif %}
-    </div>
+          </div>
+        {% endif %}
+      </div>
 
 </main>
 

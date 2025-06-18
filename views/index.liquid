@@ -100,10 +100,10 @@
                 {% if item.label == "Jaar" %}
                 {% assign jaar = item.value | replace: '[', '' | replace: ']', '' %}
                 {% endif %}
-                {% assign clean_label = item.label | replace: '[', '' | replace: ']', '' %}
-                {% if clean_label == "Plaats van uitgave" %}
-                {% assign plaats = item.value[0] %}
-                {% endif %}
+                {% if item.label == "Plaats van uitgave" %}
+                    {% assign plaats = item.value[0] %}
+                    {% assign plaats = plaats | replace: '[', '' | replace: ']', '' | strip %}
+                  {% endif %}
                 {% endfor %}
 
                 <p class="text-info"><span class="strong-text">Auteur: </span>{{ auteur }}</p>

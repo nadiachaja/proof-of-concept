@@ -1,7 +1,7 @@
 {% render 'partials/head.liquid', title: booksDetail.title %}
 
 
-<main class="detail">
+<main class="detail" id="main" tabindex="-1">
     {% assign auteur = '' %}
     {% assign jaar = '' %}
     {% assign plaats = '' %}
@@ -12,68 +12,67 @@
     {% assign trefwoorden = '' %}
     {% assign kopie = '' %}
     {% assign status = '' %}
-    
+
     <!-- auteur -->
     {% for item in booksDetail.metadata %}
-        {% if item.label == "Auteur" %}
-            {% assign auteur = item.value[0] | replace: '[', '' | replace: ']', '' %}
-        {% endif %}
-    {% endfor %}
-    
-    <!-- info-->
-    {% for item in booksDetail.metadata %}
-        {% assign value = '' %}
-        {% if item.value.size %}
-            {% assign value = item.value | join: ' ' %}
-        {% else %}
-            {% assign value = item.value %}
-        {% endif %}
-        
-        {% if item.label == "Jaar" %}
-            {% assign jaar = value | replace: '[', '' | replace: ']', '' %}
-        {% elsif item.label == "Plaats van uitgave" %}
-            {% assign plaats = value | replace: '[', '' | replace: ']', '' %}
-        {% elsif item.label == "UBN" %}
-            {% assign ubn = value | replace: '[', '' | replace: ']', '' %}
-        {% elsif item.label == "Signatuur" %}
-            {% assign signatuur = value | replace: '[', '' | replace: ']', '' %}
-        {% elsif item.label == "Bibliografie" %}
-            {% assign bibliografie = value | replace: '[', '' | replace: ']', '' %}
-        {% elsif item.label == "Opmerkingen" %}
-            {% assign opmerkingen = value | replace: '[', '' | replace: ']', '' %}
-        {% elsif item.label == "Trefwoorden" %}
-            {% assign trefwoorden = value | replace: '[', '' | replace: ']', '' %}
-        {% elsif item.label == "Aantal kopieën" %}
-            {% assign kopie = value | replace: '[', '' | replace: ']', '' %}
-        {% elsif item.label == "Status" %}
-            {% assign status = value | replace: '[', '' | replace: ']', '' %}
-        {% endif %}
+    {% if item.label == "Auteur" %}
+    {% assign auteur = item.value[0] | replace: '[', '' | replace: ']', '' %}
+    {% endif %}
     {% endfor %}
 
-    
+    <!-- info-->
+    {% for item in booksDetail.metadata %}
+    {% assign value = '' %}
+    {% if item.value.size %}
+    {% assign value = item.value | join: ' ' %}
+    {% else %}
+    {% assign value = item.value %}
+    {% endif %}
+
+    {% if item.label == "Jaar" %}
+    {% assign jaar = value | replace: '[', '' | replace: ']', '' %}
+    {% elsif item.label == "Plaats van uitgave" %}
+    {% assign plaats = value | replace: '[', '' | replace: ']', '' %}
+    {% elsif item.label == "UBN" %}
+    {% assign ubn = value | replace: '[', '' | replace: ']', '' %}
+    {% elsif item.label == "Signatuur" %}
+    {% assign signatuur = value | replace: '[', '' | replace: ']', '' %}
+    {% elsif item.label == "Bibliografie" %}
+    {% assign bibliografie = value | replace: '[', '' | replace: ']', '' %}
+    {% elsif item.label == "Opmerkingen" %}
+    {% assign opmerkingen = value | replace: '[', '' | replace: ']', '' %}
+    {% elsif item.label == "Trefwoorden" %}
+    {% assign trefwoorden = value | replace: '[', '' | replace: ']', '' %}
+    {% elsif item.label == "Aantal kopieën" %}
+    {% assign kopie = value | replace: '[', '' | replace: ']', '' %}
+    {% elsif item.label == "Status" %}
+    {% assign status = value | replace: '[', '' | replace: ']', '' %}
+    {% endif %}
+    {% endfor %}
+
+
     <a class="link" href="/">
         <p class="text-back">Teug naar overview</p>
     </a>
-    
+
     <!-- img -->
-     <div class="carousel buttons-carousel">
-    {% for img in booksDetail.assets %}
-      {% if img.medium %}
+    <div class="carousel buttons-carousel">
+        {% for img in booksDetail.assets %}
+        {% if img.medium %}
         <img class="detail-book-img" loading="lazy" src="{{ img.medium }}" width="200" height="200"
-             alt="{{ booksDetail.title }}">
-      {% endif %}
-    {% endfor %}
-     </div>
-    
+            alt="{{ booksDetail.title }}">
+        {% endif %}
+        {% endfor %}
+    </div>
+
     <section class="container-title">
-      <h1 class="titel-book">{{ booksDetail.title }}</h1>
-      <p class="auteur-book">{{ auteur }}</p>
-      <button class="btn-share">
-      <img class="share" loading="lazy" src="/assets/delen.svg" width="40" height="40"
-      alt="delen">
-      </button>
+        <h1 class="titel-book">{{ booksDetail.title }}</h1>
+        <p class="auteur-book">{{ auteur }}</p>
+        <button class="btn-share">
+            <img class="share" loading="lazy" src="/assets/delen.svg" width="40" height="40" alt="delen">
+        </button>
     </section>
-    
+
     <div class="container-info-book">
         <p class="info-book">Jaar: <span class="info-book-answer">{{ jaar }}</span></p>
         <p class="info-book">Plaats van uitgave: <span class="info-book-answer">{{ plaats }}</span></p>
@@ -91,28 +90,88 @@
         <h2 class="subtitle-detail">Reacties</h2>
         <div class="wrapper-container">
             <p class="text-reactie">Reactie</p>
-            <form class="form-reactie" action="/detail/{{ booksDetail.id }}" method="post">
-            <textarea type="text" name="reactie" id="reactie" placeholder="Schrijf hier je reactie" required></textarea>
+            <form class="form-reactie" action="/detail/{{ booksDetail.id }}" method="post" data-enhanced="true">
+                <input type="hidden" value="{{ booksDetail.id }}" name="id">
+                <textarea type="text" name="reactie" id="reactie" placeholder="Schrijf hier je reactie"
+                    required></textarea>
 
-            <button class="post-reactie" type="submit"><p class="text-btn-post">Post</p></button>
+                <button class="post-reactie" type="submit">
+                    <p class="text-btn-post">Post</p>
+                </button>
             </form>
         </div>
     </section>
 
- 
+
     <div class="container-comment">
-        {% if messages and messages.size > 0  %}
-          {% for message in messages %}
-            <p class="comments">{{ message.text }}</p>
-          {% endfor %}
+        {% if messages and messages.size > 0 %}
+        {% for message in messages %}
+        <p class="comments">{{ message.text }}</p>
+        {% endfor %}
         {% else %}
-          <div class="empty-state">
+        <div class="empty-state">
             <h3 class="empty-no-reactie">Geen reacties gevonden</h3>
             <p class="empty-no-submit">Schrijf hier een reactie</p>
-          </div>
+        </div>
         {% endif %}
-      </div>
+    </div>
 
 </main>
+
+<script type="module">
+    if ('fetch' in window && 'DOMParser' in window) {
+
+
+        document.addEventListener('submit', async function (event) {
+            const form = event.target;
+
+            if (!form.hasAttribute('data-enhanced')) {
+                return;
+            }
+
+            event.preventDefault();
+
+            document.querySelector('.text-btn-post').classList.add('loading');
+
+            let formData = new FormData(form);
+
+            if (event.submitter) {
+                formData.append(event.submitter.name, event.submitter.value);
+            }
+
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: new URLSearchParams(formData)
+            });
+
+            const responseText = await response.text();
+            console.log('Response HTML:', responseText);
+
+            const parser = new DOMParser();
+            const responseDOM = parser.parseFromString(responseText, 'text/html');
+
+            // Zorg dat dit actief is
+            const newForm = responseDOM.querySelector('[data-enhanced="true"]');
+
+            // Check of newForm bestaat voordat je het gebruikt
+            if (newForm) {
+                form.outerHTML = newForm.outerHTML;
+            } else {
+                console.warn('Nieuw formulier niet gevonden in server response.');
+            }
+
+            const textSucces = document.querySelector(".text-btn-post");
+            const textVerstuur = textSucces.textContent;
+
+            textSucces.classList.remove("loading");
+            textSucces.textContent = "✔ Je gedachte is vereeuwigd";
+
+            setTimeout(() => {
+                textSucces.textContent = textVerstuur;
+                window.location.reload();
+            }, 2500);
+        });
+    }
+</script>
 
 {% render 'partials/footer.liquid' %}

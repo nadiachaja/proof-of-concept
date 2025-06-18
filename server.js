@@ -76,7 +76,7 @@ app.get('/detail/:id', async function (request, response) {
 
   try {
     const apiDetailBooks = await fetch(`https://efm-student-case-proxy-api.vercel.app/detail/${id}`);
-    const apiMessages = await fetch('https://fdnd.directus.app/items/messages?filter={"for":%20{"_contains":%20"Nadia_"}}')
+    const apiMessages = await fetch(`https://fdnd.directus.app/items/messages?filter[for][_eq]=Nadia_S12&filter[from][_eq]=${id}`)
 
     if (!apiDetailBooks.ok) {
       return response.status(404).render('404');
@@ -94,8 +94,7 @@ app.get('/detail/:id', async function (request, response) {
 });
 
 app.post('/detail/:id', async function (request, response) {
-  console.log(request.body.reactie);
-  const id = request.params.id;
+  const id = request.body.id;
 
   const results = await fetch('https://fdnd.directus.app/items/messages', {
     method: 'POST',
@@ -104,12 +103,14 @@ app.post('/detail/:id', async function (request, response) {
     },
     body: JSON.stringify({
       for: "Nadia_S12",
-      text: request.body.reactie
+      text: request.body.reactie,
+      from: id
     })
   });
   const resultResponse = await results.json();
   response.redirect(303, '/detail/' + id)
 });
+
 
 
 app.use(function (request, response) {

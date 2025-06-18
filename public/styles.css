@@ -661,3 +661,21 @@ header {
 @view-transition {
     navigation: auto;
   }
+
+
+  .post-reactie .loading {
+    content: url('/assets/loading.svg');
+    font-size: 16px;
+    animation: rotation 1s linear infinite;
+    /* padding: .5em; */
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

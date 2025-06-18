@@ -445,7 +445,6 @@ header {
         grid-column: 1;
         position: sticky;
         top: 250px;
-        /* afstand vanaf bovenkant viewport */
         align-self: start;
         z-index: 10;
     }
@@ -667,7 +666,6 @@ header {
     content: url('/assets/loading.svg');
     font-size: 16px;
     animation: rotation 1s linear infinite;
-    /* padding: .5em; */
 }
 
 @keyframes rotation {
@@ -679,3 +677,39 @@ header {
         transform: rotate(360deg);
     }
 }
+
+
+
+.confetti {
+	width:calc( .25em + 2em * var(--size));
+	height:calc( .25em + 2em * var(--size));
+	background-color: hsl(calc(270 + var(--color) * 60) 100% 50%);
+	
+	position:fixed;
+	top:-3em;
+	left:calc(3em + (100% - 8em) * var(--positieX));
+	z-index:100;
+	
+	animation:
+		confettiAnimation
+		calc(2s + 2s * var(--duration))
+		calc(var(--delay) * 3s) 
+		linear;
+}
+
+@keyframes confettiAnimation {
+	0% {
+	}
+	100% {
+		border-radius: calc(5px + 15px * var(--round));
+		transform:
+			translateY(calc(100vh + 3em))
+			perspective(20em)
+			rotateY( calc( 2turn + 4turn * var(--rotateY) ) )
+			translateZ( calc(1em + 3em * var(--turn) ) )
+			rotateX( calc( 3turn + 6turn * var(--rotateX) ) )
+		  rotateZ( calc( 2turn + 4turn * var(--rotateZ) ) )
+			scale( calc(0.5 + var(--scale) * 0.5) );
+	}
+}
+

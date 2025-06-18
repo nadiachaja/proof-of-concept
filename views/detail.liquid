@@ -118,6 +118,9 @@
 
 </main>
 
+
+<!-- MARK: SCRIPT -->
+
 <script type="module">
     if ('fetch' in window && 'DOMParser' in window) {
 
@@ -165,6 +168,48 @@
 
             textSucces.classList.remove("loading");
             textSucces.textContent = "✔ Je gedachte is vereeuwigd";
+            partyConfetti();
+
+            function partyConfetti() {
+                const deMain = document.querySelector(".detail");
+
+                for (let i = 0; i < 150; i++) {
+                    const confetto = document.createElement("div");
+                    confetto.classList.add("confetti");
+
+                    const positieX = Math.random();
+                    const delay = Math.random();
+                    const color = Math.random();
+                    const size = Math.random();
+                    const duration = Math.random();
+                    const turn = Math.random();
+                    const rotateX = Math.random();
+                    const rotateY = Math.random();
+                    const rotateZ = Math.random();
+                    const scale = Math.random();
+                    const round = Math.random();
+
+                    confetto.style.setProperty("--positieX", positieX);
+                    confetto.style.setProperty("--delay", delay);
+                    confetto.style.setProperty("--color", color);
+                    confetto.style.setProperty("--size", size);
+                    confetto.style.setProperty("--duration", duration);
+                    confetto.style.setProperty("--turn", turn);
+                    confetto.style.setProperty("--rotateX", rotateX);
+                    confetto.style.setProperty("--rotateY", rotateY);
+                    confetto.style.setProperty("--rotateZ", rotateZ);
+                    confetto.style.setProperty("--scale", scale);
+                    confetto.style.setProperty("--round", round);
+
+                    confetto.addEventListener("animationend", verwijder);
+
+                    deMain.insertAdjacentElement("beforeend", confetto);
+                }
+
+                function verwijder(e) {
+                    e.target.remove();
+                }
+            }
 
             setTimeout(() => {
                 textSucces.textContent = textVerstuur;

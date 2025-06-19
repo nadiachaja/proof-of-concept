@@ -121,62 +121,64 @@
 <!-- MARK: SCRIPT -->
 
 <script type="module">
-    if ('fetch' in window && 'DOMParser' in window) {
+    if ('fetch' in window && 'DOMParser' in window) { //kijkt of de browser dit ondersteund 
 
 
-        document.addEventListener('submit', async function (event) {
+        document.addEventListener('submit', async function (event) { //luistert naar alle formulier submits 
             const form = event.target;
 
-            if (!form.hasAttribute('data-enhanced')) {
+            if (!form.hasAttribute('data-enhanced')) { //alle formulier met data-enhanced worden aangepast
                 return;
             }
 
-            event.preventDefault();
+            event.preventDefault(); // stop het standaar dladen van de pagina 
 
-            document.querySelector('.text-btn-post').classList.add('loading');
+            document.querySelector('.text-btn-post').classList.add('loading'); //voeg de loading class toe aan de tekst waar je op post
 
-            let formData = new FormData(form);
+            let formData = new FormData(form); //maakt FormData object van het formulier
 
-            if (event.submitter) {
+            if (event.submitter) { // voeg knopgegevens toe aan het formulier
                 formData.append(event.submitter.name, event.submitter.value);
             }
 
-            const response = await fetch(form.action, {
+            const response = await fetch(form.action, { //verstuurd de data door de post
                 method: form.method,
                 body: new URLSearchParams(formData)
             });
 
-            const responseText = await response.text();
+            const responseText = await response.text(); //haalt de html op
             console.log('Response HTML:', responseText);
 
-            const parser = new DOMParser();
-            const responseDOM = parser.parseFromString(responseText, 'text/html');
+            const parser = new DOMParser(); 
+            const responseDOM = parser.parseFromString(responseText, 'text/html'); // zet de response om naar html 
 
-            // Zorg dat dit actief is
+            // Zorg dat dit actief is 
             const newForm = responseDOM.querySelector('[data-enhanced="true"]');
 
-            // Check of newForm bestaat voordat je het gebruikt
+            // Check of newForm bestaat voordat je het gebruikt 
             if (newForm) {
                 form.outerHTML = newForm.outerHTML;
             } else {
                 console.warn('Nieuw formulier niet gevonden in server response.');
             }
 
-            const textSucces = document.querySelector(".text-btn-post");
+            const textSucces = document.querySelector(".text-btn-post"); 
             const textVerstuur = textSucces.textContent;
 
-            textSucces.classList.remove("loading");
-            textSucces.textContent = "✔ Je gedachte is vereeuwigd";
-            partyConfetti();
+            textSucces.classList.remove("loading"); // haalt de loading weg als de post gelukt is
+            textSucces.textContent = "✔ Je gedachte is vereeuwigd"; // succes state na de loading word dit getoond om te laten zien dat het gelukt is 
+            partyConfetti(); // roept de functie op 
 
-            function partyConfetti() {
-                const deMain = document.querySelector(".detail");
+            function partyConfetti() {  //functie partyConfetti
+                const deMain = document.querySelector(".detail"); //confetti komt op de main 
 
-                for (let i = 0; i < 150; i++) {
-                    const confetto = document.createElement("div");
-                    confetto.classList.add("confetti");
+                for (let i = 0; i < 150; i++) { // maakt 150 div (confetto)
+                    const confetto = document.createElement("div"); // maakt een html element aan (div)
+                    confetto.classList.add("confetti"); // geeft de div een class
 
-                    const positieX = Math.random();
+                    // zorgt ervoor dat elke confetto uniek is 
+                    // Matg.random maakt willekeurige waarden tussen 0 en 1 aan en zet dat in een vaiable 
+                    const positieX = Math.random(); 
                     const delay = Math.random();
                     const color = Math.random();
                     const size = Math.random();
@@ -200,20 +202,21 @@
                     confetto.style.setProperty("--scale", scale);
                     confetto.style.setProperty("--round", round);
 
-                    confetto.addEventListener("animationend", verwijder);
+                    confetto.addEventListener("animationend", verwijder); // verwijder de confetti als die beneden is, zo gaat het niet opnieuw
 
-                    deMain.insertAdjacentElement("beforeend", confetto);
+                    deMain.insertAdjacentElement("beforeend", confetto); // zeg waar het elemet moet komen 
                 }
 
+                // verwijdert de functie 
                 function verwijder(e) {
-                    e.target.remove();
+                    e.target.remove(); 
                 }
             }
 
-            setTimeout(() => {
+            setTimeout(() => { //timer voor de succes state en de functie partyConfetti 
                 textSucces.textContent = textVerstuur;
-                window.location.reload();
-            }, 2500);
+                window.location.reload(); //laad de pagina opnieuw
+            }, 2500); // blijft 2.5 sec staan 
         });
     }
 </script>

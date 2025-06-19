@@ -211,6 +211,7 @@ In CSS gebruik ik de variable om het uniek te maken. Zo heeft elke confetto een 
 De confetti staat 3em boven het scherm en vallen ook 3em buiten het scherm. 
 https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/public/styles.css#L690-L721
 
+<video src="https://github.com/user-attachments/assets/b58ba2e4-a157-42fb-b012-4e6fa9511aea" controls muted autoplay playsinline></video>
 
 ### Cursor
 Ik heb een leuke animatie als je over een linkje gaat komt er een vierkantje die mee gaat met je muis. 

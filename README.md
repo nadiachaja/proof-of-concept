@@ -23,19 +23,19 @@ IO gaf een opdracht waar ik de overview en detailpagina van Embassy of the free 
      * [Design](#design)
      * [Gebruik](#gebruik)
   * [Kenmerken](#kenmerken)
-     * [Code conventies](#Code-conventies)
+     * [Code conventies](#code-conventies)
      * [Styleguide](#styleguide)
      * [GET](#get)
      * [POST](#post)
      * [Liquid](#liquid)
      * [Nesting](#nesting)
      * [Header](#header)
+     * [Skiplink](#skiplink)
      * [Carrousel](#carrousel)
      * [Zoekbalk](#zoekbalk)
      * [Confetti](#confetti)
      * [Cursor](#cursor)
-     * [Loading](#loading)
-     * [Succes](#succes)
+     * [Loading en Succes state](#loading-en-succes-state)
   * [Installatie](#installatie)
   * [Bronnen](#bronnen)
   * [Licentie](#licentie)
@@ -92,19 +92,148 @@ Als je via de overview pagina komt zie de boek pagina's daar kan je doorheen scr
 
 ## Kenmerken
 ### Code conventies
+- Voor de naamgeving van de classnames heb ik een structuur gegeven. Ik heb gekeken welke html element het is, of er nog wat in het element zit en waarvoor het is. 
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/detail.liquid#L76
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/index.liquid#L112
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/index.liquid#L88
+
+- Alles van CSS staat in de styles.css en de custom properties in de stylesheet.css
+- Alle classnames en ID zijn in kleine letters
+- Zoveel mogelijk nesten als het niet werkt dan uit de nesting
+- Classnames en ID en functie- en variabelenamen zijn duidelijk en begrijpelijk voor waar ze bedoelt zijn
+- Als je langer namen met bijvoorbeeld btn detail wordt het zo geschreven btn-detail
 
 ### Styleguide
+Ik heb een styleguide gemaakt waar ik de kleuren, tyopgrafie, border, border-radius en drop-shadow. Het font wordt ingeladen met @font-face. 
+Ik heb alles opgedeeld alle kleuren staan bij elkaar net als de rest. Zo is het overzichtelijk waar alles staat. 
+Ik heb voor sommige font-size clamp gebruikt die bewegen dan mee met de grote van het scherm. 
+Ik heb alles een duidelijke naam gegeven. Het begint met waarvoor de property bedoeld is en daarna hoe belangrij het is. 
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/public/stylesheet.css#L1-L20
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/public/stylesheet.css#L44-L50
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/public/stylesheet.css#L33-L42
+
 ### GET
+
+**Index** <br>
+Deze route wordt de fetch url van alle boeken (overview). Er zit een try/catch in als de url niet gevonden of niet goed geladen is dan geeft een 500 met dat er een fout is. Als het wel gelukt is laat dan de pagina zien. 
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/server.js#L18-L20
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/server.js#L67-L70
+
+Ik heb hier code voor de filters. Ik haal hier zo de data op door en array te maken. Ik loop dan door de url heen en stop dan wat ik in de array wil bijvoorbeeld years als dat er nog niet in zit. Ik clean de data dan ook meteen om de [] weg te halen die eromheen staan. Daarna sorteer ik de data op alfabetische volgorde en als laatst geeft ik het door aan de index.liquid waar de filters staan. 
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/server.js#L23-L66
+<br>
+**Detail** <br>
+Deze route wordt de fetch url van een specifiek boek (id). Ik geeft het id in de url mee en ook in de get. Ik geeft nog een url mee voor de reacties ik geeft daarin mee de for met de naam en de from met het id. 
+Ik heb hier ook een try/catch als de url van het specifiek boek niet wordt gevonden of niet goed geladen is geeft die een 404. 
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/server.js#L77-L83
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/server.js#L90-L94
+
 ### POST
+Voor deze route haal ik het id van het boek op. Ik fetch de url van de post en geeft de method post door daarna haal ik uit de databse de for dat ik gebruik zodat het alleen voor mij is (geeft een eigen naam), form voor het id van het boek zo zijn de reacties per boek en de text waar de reactie in komt. 
+Na de post blijf je op dezelfde pagina.
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/server.js#L96-L112
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/detail.liquid#L93-L101
+
+Hier wordt alle reacties neergezet Er wordt gekeken of er reacties zijn dan is er een empty state en anders de de reacties. 
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/detail.liquid#L106-L117
+
 ### Liquid
+Ik gebruik partials voor de head en footer die haal ik weer op in de andere liquid bestanden.
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/index.liquid#L1
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/index.liquid#L126
+
+Ik zoek ook in liquid naar de data. Ik gebruik een loop daarvoor. 
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/index.liquid#L53-L55
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/index.liquid#L85-L121
+<br>
+Met assign geeft ik de volgorde aan van hoe ik het wil hebben als het anders in de databse staat.
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/detail.liquid#L5-L14
+Hij loop door de database en zoekt Auteur en als dat zo is pak het dan en verwijder [] en hou de variable naam.
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/detail.liquid#L17-L21
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/detail.liquid#L70
+
+Hetzelfde gebeurd met de rest van de informatie
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/detail.liquid#L24-L51
+
 ### Nesting
+Ik heb zoveel mogelijk genest. Zo kan je beter zien wat er allemaal in een element zit. Zo kan je ook sneller en makkelijker iets aanpassen.
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/public/styles.css#L299-L380
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/public/styles.css#L644-L653
+
 ### Header
+Om een border om de header te zetten als je naar beneden scrolt heb ik een <div> in de header gezet en zo gestylt dan om de header komt en met stuck:top een border gezet.
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/partials/head.liquid#L18
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/public/styles.css#L51-L63
+<video src="https://github.com/user-attachments/assets/22ef7617-3c80-4816-941a-a5f1061544b1" controls muted autoplay playsinline></video>
+
+### Skiplink
+Ik heb een skiplink toegevoegd als je daarop klikt/tabt dan ga je meteen naar de main 
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/detail.liquid#L4
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/partials/head.liquid#L16
+<video src="https://github.com/user-attachments/assets/da0dd9d0-5e80-4fa7-87fa-99aaf3a4b322" controls muted autoplay playsinline></video>
+
 ### Carrousel
+Ik heb op de detailpagina voor de boek pagina's een carrousel gemaakt. De carrousel is met alleen CSS gemaakt. 
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/detail.liquid#L62-L63
+
+Ik heb de img een scroll-snap-align: center; gegeven. Als je scrolt en je hebt niet helemaal goed gescrolt dan gaat die wel naar de de richting die je scrolt.
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/public/styles.css#L467-L468
+
+Ik heb de container bij de de scroll button left en right gemaakt 
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/detail.liquid#L59
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/public/styles.css#L499-L509
+met de * gaat het over allebei de buttons daar heb ik bijna alle styling van de buttons gedaan.
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/public/styles.css#L487-L497
+
+ik heb :disabled op allebi de buttons gezet als je niet verder kan klikken/scrollen wordt de button lichter en vervaagt die een beetje en veranderd de cursor. 
+Als je over button waar je wel op kan klikken die heeft een hover. 
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/public/styles.css#L511-L522
+
+<video src="https://github.com/user-attachments/assets/83e4acec-cfa2-4b76-b9cb-759ac6d7faaf" controls muted autoplay playsinline></video>
+
 ### Zoekbalk
+Ik heb een zoekbalk waar je boeken kan zoeken door middel van de titel. 
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/public/index.js#L1-L14
+
+<video src="https://github.com/user-attachments/assets/22df6e75-b2bc-4d93-aa62-dd0a05cbf93b" controls muted autoplay playsinline></video>
+
 ### Confetti
+Als de post gelukt is komt er confetti over het scherm.
+
+Ik roep de functie op. 
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/detail.liquid#L170
+
+Ik maak een element een <div> en die geef ik een class mee. Ik maak met Math.random voor de confetto variable aan. Zo is elke confetto uniek. 
+Als de confetti is gevallen komen ze niet terug ze worden verwijdert en komen alleen weer terug als je weer een post doet. 
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/detail.liquid#L172-L214
+
+In CSS gebruik ik de variable om het uniek te maken. Zo heeft elke confetto een andere grote, draaien ze anders en hoelang ze erover doen om beneden te zijn. 
+De confetti staat 3em boven het scherm en vallen ook 3em buiten het scherm. 
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/public/styles.css#L690-L721
+
+
 ### Cursor
-### Loading
-### Succes
+Ik heb een leuke animatie als je over een linkje gaat komt er een vierkantje die mee gaat met je muis. 
+Er wordt gebruik gemaakt van GSAP en er wordt berekent waar de muis op het scherm is. 
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/public/index.js#L17-L31
+
+<video src="https://github.com/user-attachments/assets/ace6e7d5-c4f3-4636-befd-b6144347b645" controls muted autoplay playsinline></video>
+
+### Loading en Succes state
+Hierdoor krijgt je de standaard loading van de browser niet. Ik heb daarom een loading class toegevoegd die de text in de button vervangt.
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/detail.liquid#L134-L136
+
+Er wordt een svg die dan 360 graden draait zo lijkt het een loading. 
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/public/styles.css#L674-L688
+
+Na de loading komt de succes. De loading wordt verwijdert en dan komt de text dat het gelukt is. 
+De succes komt in de button van als je de post doet. 
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/detail.liquid#L165-L169
+
+Ik heb er een timer opgezet dat die 2,5 sec zichtbaar is en daarna laad de pagina en dan wordt de reactie zichtbaar.
+https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/detail.liquid#L216-L220
+
+<video src="https://github.com/user-attachments/assets/88821706-d4a0-4a4f-a22b-4d9c1cb16bf4" controls muted autoplay playsinline></video>
 
 ## Installatie
 <!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->

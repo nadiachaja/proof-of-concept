@@ -14,6 +14,12 @@ Ze geven gastcolleges aan bedrijven en scholen om hun kennis te delen met klante
 IO gaf een opdracht waar ik de overview en detailpagina van Embassy of the free mind moest maken. Embassy of the free mind is een uniek museum in Amsterdam. Het bevat 2000 jaar oude beoeken die je kan zien en lezen. Ik moest een een redesign maken die een beter gebruikerservaring te bieden had. Het moest responsive en functioneel zijn. 
 
 
+[LIVE LINK](https://proof-of-concept-bmtr.onrender.com/)
+
+<img src="https://github.com/user-attachments/assets/b0b52027-6dfc-4fa7-a91e-5befc7e61e9a" width="150" height="150">
+
+
+
 ## Inhoudsopgave
 
   * [Catalogus](#catalogus)

@@ -49,7 +49,7 @@ IO gaf een opdracht waar ik de overview en detailpagina van Embassy of the free 
 ## Catalogus
 ### Design
 Ik heb een design gemaakt voor de overview waar all boeken staan. Ik heb ervoor gekozen om de titel erbij te zetten dit was niet de website van [Embassy of the free mind](https://embassyofthefreemind.com/nl/collectie/online-catalogus/?mode=gallery&view=table&sort=random%7B1750352132309%7D%20asc). Ik heb het wel gedaan, omdat de gebruikers dan weten op welke pagina ze zitten, ik heb het toen ook meteen in het midden gezet. 
-Ik heb voor de boeken dat je de voorkant van het boek, titel, jaar, plaats en auteur kan zien. Ik heb voor niet heel veel informatie gekozen bij de overview bij de boeken, ik heb de belangrijke informatie gekozen. Dat heb ik gedaan, omdat het anders druk en vol werd. Ik heb daarbij ook een button waar je naar de detail pagina kan gaan voor meer informatie.
+Ik heb voor de boeken dat je de voorkant van het boek, titel, jaar, plaats en auteur kan zien. Ik heb voor niet heel veel informatie gekozen bij de overview bij de boeken, ik heb de belangrijke informatie gekozen. Dat heb ik gedaan, omdat het anders druk en vol werd. Ik heb daarbij ook een button waar je naar de detail pagina kan gaan voor meer informatie. Als je ervover komt dat komt er een vierkantje die met je muis mee beweegt. Ik heb hiervoor gekzoen, omdat ik een leuke hover wilde voor deze button want hier ga je naar de extra info. Het is een ander soort hover en het valt op als je erover komt.  
 Ik heb voor de kleuren gekeken naar wat er al op de website was en wat er goed bij paste. Ik heb daardoor voor 4 kleuren gekozen blauw, rood, geel en wit.
 Voor de responsive van het design heb ik ervoor gekozen om voor mobile alles onder elkaar te zetten en bij 1000px komen de boeken naast elkaar te staan en de filers komen ook naast elkaar te staan. Zo is de website goed te gebruiken op alle apparaten.  
 <br>
@@ -77,7 +77,7 @@ Als je op de pagina komt kan je scrollen door de boeken en informatie erover lez
 ### Design
 Ik heb een design gemaakt voor de detailpagina voor de boeken. Je kan de boeken, informatie en reacties zien. Ik heb ervoor gekozen om de titel en auteur groter te maken dan de rest van de informatie bij de [Embassy of the free mind](https://embassyofthefreemind.com/nl/collectie/online-catalogus/detail/c82fb4d3-8897-4d2b-c037-5e138c8186e5/media/ceec1719-2324-4788-c53f-312cf6b2395c?mode=detail&view=table&rows=1&page=1&fq%5B%5D=search_s_digitized_publication:%22Ja%22&sort=random%7B1750353722543%7D%20asc) was alles even groot. Ik heb dat gedaan zodat je kan zien welk boek je bent en is de auteur meer in beeld. Ik heb daarbij ook een duidelijk delen icon erbij gedaan zo kan je snel de pagina delen met iedereen. 
 Ik heb de pagina van de boeken in een carrousel gezet zodat je per pagina kan bekijken. Zo is het niet te druk. 
-Ik heb de reacties onderaan de pagina gezet, omdat ik dat het mist belangrijk vond de informatie en het boek zelf zijn belangrijker. 
+Ik heb de reacties onderaan de pagina gezet, omdat ik dat het mist belangrijk vond de informatie en het boek zelf zijn belangrijker. Als je een reactie plaatst krijg je confetti. Ik heb hiervoor gekozen, omdat het een leuke toevoeging is met de succes state en het zo ook duidelijk is dat het gelukt is.  
 Ik heb ervoor gekozen om alles onder elkaar te zetten bij mobile en bij 1000px komt de pagina's van het boek aan de linkerkant met de terug en de rest komt aan de linkerkant. Ik heb dit gedaan voor de responsiviteit. 
 Ik heb voor de kleuren gekeken naar wat er al op de website was en wat er goed bij paste. Ik heb daardoor voor 4 kleuren gekozen blauw, rood, geel en wit.
 <br>
@@ -210,7 +210,7 @@ https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2f
 <video src="https://github.com/user-attachments/assets/22df6e75-b2bc-4d93-aa62-dd0a05cbf93b" controls muted autoplay playsinline></video>
 
 ### Confetti
-Als de post gelukt is komt er confetti over het scherm.
+Als de post gelukt is komt er confetti over het scherm. Dit maakt de het duidelijker en leuker als de reactie is geplaatst. 
 
 Ik roep de functie op. 
 https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/views/detail.liquid#L170

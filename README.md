@@ -48,10 +48,10 @@ IO gaf een opdracht waar ik de overview en detailpagina van Embassy of the free 
 
 ## Catalogus
 ### Design
-Ik heb een deisgn gemaakt voor de overview waar all boeken staan. Ik heb ervoor gekozen om de titel erbij te zetten dit was niet de website van [Embassy of the free mind](https://embassyofthefreemind.com/nl/collectie/online-catalogus/?mode=gallery&view=table&sort=random%7B1750352132309%7D%20asc). Ik heb het wel gedaan, omdat de gebruikers dan weten op welke pagina ze zitten, ik heb het toen ook meteen in het midden gezet. 
-Ik heb voor de boeken dat je de voorkant van het boek, titel, jaar, plaats en auteur kan zien. Ik heb voor niet heel veel informatie gekozen bij de overview bij de boeken, ik heb de belangrijke informatie gekozen. dat heb ik gedaan, omdat het anders druk en vol werd. Ik heb daarbij ook een button waar je naar de detail pagina kan gaan voor meer informatie.
+Ik heb een design gemaakt voor de overview waar all boeken staan. Ik heb ervoor gekozen om de titel erbij te zetten dit was niet de website van [Embassy of the free mind](https://embassyofthefreemind.com/nl/collectie/online-catalogus/?mode=gallery&view=table&sort=random%7B1750352132309%7D%20asc). Ik heb het wel gedaan, omdat de gebruikers dan weten op welke pagina ze zitten, ik heb het toen ook meteen in het midden gezet. 
+Ik heb voor de boeken dat je de voorkant van het boek, titel, jaar, plaats en auteur kan zien. Ik heb voor niet heel veel informatie gekozen bij de overview bij de boeken, ik heb de belangrijke informatie gekozen. Dat heb ik gedaan, omdat het anders druk en vol werd. Ik heb daarbij ook een button waar je naar de detail pagina kan gaan voor meer informatie.
 Ik heb voor de kleuren gekeken naar wat er al op de website was en wat er goed bij paste. Ik heb daardoor voor 4 kleuren gekozen blauw, rood, geel en wit.
-Voor de responsive van het design heb ik ervoor gekozen om voor mobile alles onder elkaar te zetten en bij 1000px komen de boeken naast elkaar te staan en de filers komen ook naast elkaar te staan.  
+Voor de responsive van het design heb ik ervoor gekozen om voor mobile alles onder elkaar te zetten en bij 1000px komen de boeken naast elkaar te staan en de filers komen ook naast elkaar te staan. Zo is de website goed te gebruiken op alle apparaten.  
 <br>
 **Figma ontwerp** <br>
 <br>
@@ -66,6 +66,9 @@ Voor de responsive van het design heb ik ervoor gekozen om voor mobile alles ond
 <br>
 <img width="169" alt="Scherm­afbeelding 2025-06-19 om 20 16 53" src="https://github.com/user-attachments/assets/6ade3826-b655-459f-b9eb-1552dd4c2a40" />
 <img width="171" alt="Scherm­afbeelding 2025-06-19 om 20 17 19" src="https://github.com/user-attachments/assets/dfab5ebe-3f0e-469a-b0ca-f7cb09c709e0" />
+
+**Responsive** 
+<video src="https://github.com/user-attachments/assets/aac0767f-316e-4457-b186-b489e57a87e1" controls muted autoplay playsinline></video>
 
 ### Gebruik
 Als je op de pagina komt kan je scrollen door de boeken en informatie erover lezen. Je kan ook de titel van de boeken zoeken met de zoekbalk die komen dan meteen in beeld. Op de boeken staat een button met meer informatie als je daar op klikt ga je naar de detailpagina van dat boek. 
@@ -92,9 +95,11 @@ Ik heb voor de kleuren gekeken naar wat er al op de website was en wat er goed b
 <img width="171" alt=" " src="https://github.com/user-attachments/assets/b3a2eda4-8cfb-4d81-a786-6fa03a8eb691" />
 <img width="172" alt="Scherm­afbeelding 2025-06-19 om 20 16 28" src="https://github.com/user-attachments/assets/1e92ffcd-98e7-4c19-9540-dac34d659ee4" />
 
+**Responsive** 
+<video src="https://github.com/user-attachments/assets/9ce87114-418f-4a67-9eb2-c0860275d8bf" controls muted autoplay playsinline></video>
 
 ### Gebruik
-Als je via de overview pagina komt zie de boek pagina's daar kan je doorheen scrollen met de carrousel als die ondersteund wordt. Je zit alle informatie over het boek. Je kan op deze pagina een reactie achter laten en die dan ook meteen zien. Je kan ook andere reacties zien van andere. Elke boek heel zijn eigen reacties. 
+Als je via de overview pagina komt zie de boek pagina's daar kan je doorheen scrollen met de carrousel als die ondersteund wordt. Je zit alle informatie over het boek. Je kan op deze pagina een reactie achter laten en die dan ook meteen ziet. Je kan ook andere reacties van andere zien. Elke boek heel zijn eigen reacties. 
 
 ## Kenmerken
 ### Code conventies
@@ -113,6 +118,7 @@ https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2f
 Ik heb een styleguide gemaakt waar ik de kleuren, tyopgrafie, border, border-radius en drop-shadow. Het font wordt ingeladen met @font-face. 
 Ik heb alles opgedeeld alle kleuren staan bij elkaar net als de rest. Zo is het overzichtelijk waar alles staat. 
 Ik heb voor sommige font-size clamp gebruikt die bewegen dan mee met de grote van het scherm. 
+Ik heb ales uit het ontwerp gehaald die ik heb gemaakt. 
 Ik heb alles een duidelijke naam gegeven. Het begint met waarvoor de property bedoeld is en daarna hoe belangrij het is. 
 https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/public/stylesheet.css#L1-L20
 https://github.com/nadiachaja/proof-of-concept/blob/bbbe859f86ea3a95006af317fa2fef05d762b4a4/public/stylesheet.css#L44-L50
